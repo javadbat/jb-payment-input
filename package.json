@@ -1,0 +1,32 @@
+{
+  "name": "jb-payment-input",
+  "description": "payment input web component",
+  "type": "module",
+  "author": {
+		"name": "mohammad javad bathaei",
+		"email": "javadbat@gmail.com"
+	},
+  "keywords": [
+    "jb",
+    "jb-payment-input",
+    "number input",
+    "card number",
+    "shaba",
+    "iran bank",
+    "web component"
+  ],
+  "version": "1.0.0",
+  "bugs": "https://github.com/javadbat/jb-payment-input/issues",
+  "license": "MIT",
+  "files": [
+    "LICENSE",
+    "README.md",
+    "lib/",
+    "dist/"
+  ],
+  "main": "index.js",
+  "repository": {
+		"type": "git",
+		"url": "git@github.com:javadbat/jb-payment-input.git"
+  }
+}
