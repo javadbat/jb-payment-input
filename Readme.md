@@ -15,6 +15,8 @@ payment input web component for 16 digit card number and shaba number with this 
 - will accept persian number char and convert them to english char
 
 this component use `jb-input` as a dependancy.
+## Demo   
+Demo & Sample in codepen: <https://codepen.io/javadbat/pen/rNvWdve>
 ## instructions
 
 ### install
@@ -35,7 +37,7 @@ import 'jb-payment-input';
 in your html or jsx
 
 ```html
-<jb-payment-input class="" label="card number:" message="subtitle of input box"></jb-input>
+<jb-payment-input input-type="CARD_NUMBER" class="" label="card number:" message="subtitle of input box"></jb-input>
 ```
 #### using cdn
 
