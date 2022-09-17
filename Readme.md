@@ -12,7 +12,7 @@ payment input web component for 16 digit card number and shaba number with this 
 
 - customizable ui with css variable so you can have multiple style in different scope of your app.
 
-- will accept persian number char and convert them to english char
+- will accept persian/arabic number char and convert them to english char
 
 this component use `jb-input` as a dependancy.
 ## Demo   
@@ -23,30 +23,38 @@ Demo & Sample in codepen: <https://codepen.io/javadbat/pen/rNvWdve>
 
 #### using npm
 
+1- install npm package
 ```cmd
 npm i jb-payment-input
 ```
 
-in one of your js in page
+2- import module in one of your js in page
 
 ```js
 import 'jb-payment-input';
 
 ```
 
-in your html or jsx
+3- use compoent in your html or jsx file like any other html tag
 
 ```html
 <jb-payment-input input-type="CARD_NUMBER" class="" label="card number:" message="subtitle of input box"></jb-input>
 ```
 #### using cdn
 
-you can just add script tag to your html file and then use web component how ever you need
+1- add script tag to your html file.
 
 ```HTML
+<script src="https://unpkg.com/jb-input/dist/JBInput.umd.js"></script>
 <script src="https://unpkg.com/jb-payment-input/dist/JBPaymentInput.umd.js"></script>
 ```
+2- use web component like any other html tag whenever you need
 
+```html
+<div class="some-app-div">
+  <jb-payment-input input-type="CARD_NUMBER" class="" label="card number:" message="subtitle of input box"></jb-input>
+</div>
+```
 ### get/set value
 
 ```js
