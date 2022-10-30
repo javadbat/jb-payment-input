@@ -1,20 +1,31 @@
 import HTML from './JBPaymentInput.html';
 import CSS from './JBPaymentInput.scss';
 import 'jb-input';
+// eslint-disable-next-line no-duplicate-imports
+import { JBInputWebComponent } from 'jb-input';
+import { JBPaymentInputElements, JBPaymentInputValidationResult } from './Types';
+import { ChangeEvent } from 'react';
 
 /**
  * @readonly
  * @enum {string} 
  */
-export const InputTypes = {
-    CardNumber: 'CARD_NUMBER',
-    ShabaNumber: 'SHABA_NUMBER',
+export enum InputTypes {
+    CardNumber= 'CARD_NUMBER',
+    ShabaNumber= 'SHABA_NUMBER',
 }
-class JBPaymentInputWebComponent extends HTMLElement {
+export class JBPaymentInputWebComponent extends HTMLElement {
+    internals_:ElementInternals | null = null;
     #disabled = false;
-    #intentWaitingValue = null;
     static get formAssociated() { return true; }
     #value = '';
+    #intentWaitingValue:string | null = null;
+    elements!:JBPaymentInputElements;
+    inputType?:InputTypes;
+    validation:JBPaymentInputValidationResult = {
+        isValid: null,
+        message: null
+    }
     get value() {
         return this.#value;
     }
@@ -57,11 +68,11 @@ class JBPaymentInputWebComponent extends HTMLElement {
 
     }
     callOnLoadEvent() {
-        var event = new CustomEvent('load', { bubbles: true, composed: true });
+        const event = new CustomEvent('load', { bubbles: true, composed: true });
         this.dispatchEvent(event);
     }
     callOnInitEvent() {
-        var event = new CustomEvent('init', { bubbles: true, composed: true });
+        const event = new CustomEvent('init', { bubbles: true, composed: true });
         this.dispatchEvent(event);
     }
     initWebComponent() {
@@ -74,7 +85,7 @@ class JBPaymentInputWebComponent extends HTMLElement {
         element.innerHTML = html;
         shadowRoot.appendChild(element.content.cloneNode(true));
         this.elements = {
-            input: shadowRoot.querySelector('jb-input'),
+            input: shadowRoot.querySelector('jb-input')! as JBInputWebComponent,
         };
         this.registerEventListener();
     }
@@ -87,7 +98,7 @@ class JBPaymentInputWebComponent extends HTMLElement {
         if (this.inputType == InputTypes.CardNumber) {
             let val = rawText.replace(/\s/g, '')
                 .replace(/\u06F0/g, '0').replace(/\u06F1/g, '1').replace(/\u06F2/g, '2').replace(/\u06F3/g, '3').replace(/\u06F4/g, '4').replace(/\u06F5/g, '5').replace(/\u06F6/g, '6').replace(/\u06F7/g, '7').replace(/\u06F8/g, '8').replace(/\u06F9/g, '9')
-                .replace(/[^0-9]/g, '')
+                .replace(/[^0-9]/g, '');
             val = val.substring(0, 16);
             return val;
         }
@@ -110,7 +121,7 @@ class JBPaymentInputWebComponent extends HTMLElement {
                         irPart = 'IR';
                     } else {
                         //if user input no ir part and no valid number part we return empty string
-                        return ''
+                        return '';
                     }
                 }
                 if (irPart.length == 1) {
@@ -146,45 +157,36 @@ class JBPaymentInputWebComponent extends HTMLElement {
                 formattedValue = unformattedValue;
             }
         }
-        return { unformattedValue, formattedValue }
+        return { unformattedValue, formattedValue };
     }
-    /**
-     * 
-     * @param {String} valueString 
-     * @return {String} standard value
-     */
     registerEventListener() {
-        this.elements.input.addEventListener('change', this.onInputChange.bind(this));
-        this.elements.input.addEventListener('keypress', this.onInputKeyPress.bind(this));
-        this.elements.input.addEventListener('keyup', this.onInputKeyup.bind(this));
-        this.elements.input.addEventListener('keydown', this.onInputKeyDown.bind(this));
-        this.elements.input.addEventListener('input', this.onInputInput.bind(this));
-        this.elements.input.addEventListener('beforeinput', this.onInputBeforeInput.bind(this));
+        this.elements.input.addEventListener('change', (e)=>this.onInputChange(e as unknown as ChangeEvent));
+        this.elements.input.addEventListener('keypress', (e)=>this.onInputKeyPress(e));
+        this.elements.input.addEventListener('keyup', (e)=>this.onInputKeyup(e));
+        this.elements.input.addEventListener('keydown', (e)=>this.onInputKeyDown(e));
+        this.elements.input.addEventListener('input', (e)=>this.onInputInput(e as unknown as InputEvent));
+        this.elements.input.addEventListener('beforeinput', (e)=>this.onInputBeforeInput(e));
     }
     initProp() {
         this.#disabled = false;
-        this.inputType = this.getAttribute('input-type');
+        this.inputType = this.getAttribute('input-type') as InputTypes;
         this.value = this.getAttribute('value') || '';
-        this.validation = {
-            isValid: null,
-            message: null
-        };
     }
     static get observedAttributes() {
         return ['label', 'input-type', 'message', 'value', 'name', 'autocomplete', 'placeholder', 'disabled', 'inputmode'];
     }
-    attributeChangedCallback(name, oldValue, newValue) {
+    attributeChangedCallback(name:string, oldValue:string, newValue:string) {
         // do something when an attribute has changed
         this.onAttributeChange(name, newValue);
     }
-    onAttributeChange(name, value) {
+    onAttributeChange(name:string, value:string) {
         switch (name) {
             case 'label':
                 this.elements.input.setAttribute('label', value);
                 break;
             case 'input-type':
-                if (Object.values(InputTypes).includes(value)) {
-                    this.inputType = value;
+                if (Object.values(InputTypes).includes(value as InputTypes)) {
+                    this.inputType = value as InputTypes;
                     if (this.#intentWaitingValue !== null) {
                         this.value = this.#intentWaitingValue;
                         this.#intentWaitingValue = null;
@@ -228,7 +230,7 @@ class JBPaymentInputWebComponent extends HTMLElement {
      * 
      * @param {KeyboardEvent} e 
      */
-    onInputKeyDown(e) {
+    onInputKeyDown(e:KeyboardEvent) {
         //trigger componnet event
         const keyDownnInitObj = {
             key: e.key,
@@ -247,8 +249,8 @@ class JBPaymentInputWebComponent extends HTMLElement {
      * 
      * @param {InputEvent} e 
      */
-    onInputInput(e) {
-        const inputedText = e.target.value;
+    onInputInput(e:InputEvent) {
+        const inputedText = (e.target as JBInputWebComponent).value;
         const sVal = this.standardValue(inputedText);
         this.#value = sVal.unformattedValue;
         this.elements.input.value = sVal.formattedValue;
@@ -274,7 +276,7 @@ class JBPaymentInputWebComponent extends HTMLElement {
     * 
     * @param {InputEvent} e
     */
-    onInputBeforeInput(e) {
+    onInputBeforeInput(e:InputEvent) {
         const inputedText = e.data;
         this.dispatchBeforeInputEvent(e);
     }
@@ -294,7 +296,7 @@ class JBPaymentInputWebComponent extends HTMLElement {
         const event = new InputEvent('beforeinput', eventInitDict);
         this.dispatchEvent(event);
     }
-    onInputKeyPress(e) {
+    onInputKeyPress(e:KeyboardEvent) {
         //TODO: raise keypress event
         const event = new CustomEvent('keypress');
         this.dispatchEvent(event);
@@ -321,7 +323,7 @@ class JBPaymentInputWebComponent extends HTMLElement {
         const event = new CustomEvent('enter');
         this.dispatchEvent(event);
     }
-    onInputChange(e) {
+    onInputChange(e:ChangeEvent) {
         this.triggerInputValidation(true);
         //here is the rare  time we update _value directly becuase we want trigger event that may read value directly from dom
         this.dispatchOnChangeEvent();
