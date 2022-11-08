@@ -12,5 +12,5 @@ declare module '*.html' {
 
 declare module '*.svg' {
     const value: string;
-    export default value;
+    export default value
 }

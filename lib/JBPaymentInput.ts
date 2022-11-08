@@ -4,7 +4,6 @@ import 'jb-input';
 // eslint-disable-next-line no-duplicate-imports
 import { JBInputWebComponent } from 'jb-input';
 import { JBPaymentInputElements, JBPaymentInputValidationResult } from './Types';
-import { ChangeEvent } from 'react';
 
 /**
  * @readonly
@@ -38,8 +37,6 @@ export class JBPaymentInputWebComponent extends HTMLElement {
 
             this.#value = unformattedValue;
             this.elements.input.value = formattedValue;
-
-
         }
     }
     #validationList = [];
@@ -160,7 +157,7 @@ export class JBPaymentInputWebComponent extends HTMLElement {
         return { unformattedValue, formattedValue };
     }
     registerEventListener() {
-        this.elements.input.addEventListener('change', (e)=>this.onInputChange(e as unknown as ChangeEvent));
+        this.elements.input.addEventListener('change', (e)=>this.onInputChange(e));
         this.elements.input.addEventListener('keypress', (e)=>this.onInputKeyPress(e));
         this.elements.input.addEventListener('keyup', (e)=>this.onInputKeyup(e));
         this.elements.input.addEventListener('keydown', (e)=>this.onInputKeyDown(e));
@@ -323,7 +320,7 @@ export class JBPaymentInputWebComponent extends HTMLElement {
         const event = new CustomEvent('enter');
         this.dispatchEvent(event);
     }
-    onInputChange(e:ChangeEvent) {
+    onInputChange(e) {
         this.triggerInputValidation(true);
         //here is the rare  time we update _value directly becuase we want trigger event that may read value directly from dom
         this.dispatchOnChangeEvent();
