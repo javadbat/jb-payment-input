@@ -54,7 +54,7 @@ import 'jb-payment-input';
 
 ```html
 <div class="some-app-div">
-  <jb-payment-input input-type="CARD_NUMBER" class="" label="card number:" message="subtitle of input box"></jb-input>
+  <jb-payment-input input-type="CARD_NUMBER" class="" label="card number:" message="subtitle of input box"></jb-payment-input>
 </div>
 ```
 ### get/set value
@@ -65,7 +65,24 @@ const inputValue = document.getElementByTagName('jb-payment-input').value;
 //set value
 document.getElementByTagName('jb-payment-input').value = "new string";
 ```
+### add bank icons
+for card number input you can add bank icon in the start or end of input (currently only support iran banks) so when user type first 6 digit of card number it will show bank logo.    
+to make this happen you just have to import and add `bank-indicator` web component
+```js
+import 'jb-payment-input/dist/bank-indicator/bank-indicator.js';
+```
 
+```html
+ <jb-payment-input input-type="CARD_NUMBER" class="" label="card number:" message="with bank indicator">
+   <bank-indicator slot="end-section"></bank-indicator>
+ </jb-payment-input>
+```
+you can set slot with `end-section` or `start-section` for position.    
+if you want to use bank-indicator outside of jb-payment-input you can set `prefix` attribute with 6 digit number of bank card number.
+```html
+   <!-- for example for melli card -->
+   <bank-indicator prefix="603799"></bank-indicator>
+```
 ### events
 
 ```js

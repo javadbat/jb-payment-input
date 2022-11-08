@@ -52,6 +52,7 @@ export class BankIndicatorWebComponent extends HTMLElement {
             bankImageWrapper: shadowRoot.querySelector('.bank-image-wrapper')! as HTMLDivElement,
             PaymentInputParent: null
         };
+        this.changeBank(null);
         this.registerEventListener();
     }
 
