@@ -34,7 +34,7 @@ import ToseeSaderatLogo from './logo/Tosee-Saderat.svg';
 import KhavarmianehBankLogo from './logo/Khavarmianeh-Bank.svg';
 import BlueBankLogo from './logo/BluBank.svg';
 import ResalatBankLogo from './logo/Resalat-Bank.svg';
-import MelalBankLogo from './logo/Melal-Bank.svg';
+import MelalBankLogo from './logo/Melal.svg';
 //use dynamic import when you really want a lazy load logo later after good support
 // const logoImport = async function(name){
 //     return await import(`./logo/${name}.svg`);

@@ -2,6 +2,7 @@ import HTML from './bank-indicator.html';
 import CSS from './bank-indicator.scss';
 import { BankIndicatorElements, BankItem } from './types';
 import {allBankInfo} from './BankInfo';
+import creditCardIcon from './credit-card.svg';
 export class BankIndicatorWebComponent extends HTMLElement {
     elements!:BankIndicatorElements;
     bankInfo = allBankInfo;
@@ -13,8 +14,9 @@ export class BankIndicatorWebComponent extends HTMLElement {
         this.#selectedBank = value;
         if(value){
             this.elements.bankImageWrapper.innerHTML= value.logo;
+            this.elements.bankImageWrapper.setAttribute("title", value.title.fa);
         }else{
-            this.elements.bankImageWrapper.innerHTML = "";
+            this.elements.bankImageWrapper.innerHTML = creditCardIcon;
         }
     }
     constructor() {
