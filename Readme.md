@@ -71,7 +71,10 @@ to make this happen you just have to import and add `bank-indicator` web compone
 ```js
 import 'jb-payment-input/dist/bank-indicator/bank-indicator.js';
 ```
-
+### set custom style
+| css variable name          | description                                      |
+| -----------------          | -----------                                      |
+| --bank-indicator-padding   | banl logo padding,the default value is `8px 16px`|
 ```html
  <jb-payment-input input-type="CARD_NUMBER" class="" label="card number:" message="with bank indicator">
    <bank-indicator slot="end-section"></bank-indicator>
