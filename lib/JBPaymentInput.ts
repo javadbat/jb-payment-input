@@ -19,6 +19,7 @@ export class JBPaymentInputWebComponent extends HTMLElement {
     static get formAssociated() { return true; }
     #value = '';
     #intentWaitingValue:string | null = null;
+
     elements!:JBPaymentInputElements;
     inputType?:InputTypes;
     validation:JBPaymentInputValidationResult = {
@@ -48,6 +49,19 @@ export class JBPaymentInputWebComponent extends HTMLElement {
             this.elements.input.validationList = value;
             this.#validationList = value;
         }
+    }
+    #separatorString = ' ';
+    //calculated on separatorString set
+    #separatorRegex = /\s/g
+    get separatorString(){
+        return this.#separatorString;
+    }
+    set separatorString(value:string){
+        this.#separatorString = value;
+        this.#separatorRegex = RegExp(this.#separatorString.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/\s/g, '\\s'),"g");
+        //fix prev value display on char update
+        const sVal = this.standardValue(this.value);
+        this.elements.input.value = sVal.formattedValue;
     }
     constructor() {
         super();
@@ -87,13 +101,21 @@ export class JBPaymentInputWebComponent extends HTMLElement {
         this.registerEventListener();
     }
     /**
+     * @description remove separator char from given string to extract pure value
+     * @param {string} rawText 
+     * @return {string}
+     */
+    #removeSeparatorString(rawText:string):string{
+        return rawText.replace(this.#separatorRegex,"");
+    }
+    /**
      * 
      * @param {string} rawText 
      * @return {string} 
      */
-    getUnformattedValue(rawText) {
+    getUnformattedValue(rawText:string):string{
         if (this.inputType == InputTypes.CardNumber) {
-            let val = rawText.replace(/\s/g, '')
+            let val = this.#removeSeparatorString(rawText)
                 .replace(/\u06F0/g, '0').replace(/\u06F1/g, '1').replace(/\u06F2/g, '2').replace(/\u06F3/g, '3').replace(/\u06F4/g, '4').replace(/\u06F5/g, '5').replace(/\u06F6/g, '6').replace(/\u06F7/g, '7').replace(/\u06F8/g, '8').replace(/\u06F9/g, '9')
                 .replace(/[^0-9]/g, '');
             val = val.substring(0, 16);
@@ -104,12 +126,12 @@ export class JBPaymentInputWebComponent extends HTMLElement {
             if (seprator && seprator.groups) {
 
                 //convert perian number to en number and replace space
-                let numberPart = seprator.groups.other.replace(/\s/g, '')
+                let numberPart = this.#removeSeparatorString(seprator.groups.other)
                     .replace(/\u06F0/g, '0').replace(/\u06F1/g, '1').replace(/\u06F2/g, '2').replace(/\u06F3/g, '3').replace(/\u06F4/g, '4').replace(/\u06F5/g, '5').replace(/\u06F6/g, '6').replace(/\u06F7/g, '7').replace(/\u06F8/g, '8').replace(/\u06F9/g, '9')
                     .replace(/[^0-9]/g, '');
                 numberPart = numberPart.substring(0, 24);
                 //manage ir part
-                let irPart
+                let irPart= "";
                 if (seprator.groups.ir) {
                     irPart = seprator.groups.ir.toUpperCase();
                 } else {
@@ -137,19 +159,20 @@ export class JBPaymentInputWebComponent extends HTMLElement {
      * @param {String} valueString 
      * @return {{formattedValue: String, unformattedValue: String}} standard value
      */
-    standardValue(valueString) {
+    standardValue(valueString:string):{formattedValue:string, unformattedValue:string}{
         let formattedValue = '';
         let unformattedValue = '';
         // console.log({inputType:this.inputType});
         if (this.inputType == InputTypes.CardNumber) {
             unformattedValue = this.getUnformattedValue(valueString);
-            formattedValue = unformattedValue.replace(/([0-9]{4})/g, '$1 ').replace(/(.*)(\s)$/g, '$1');
+            const trailingSepratorRemover = RegExp(`(.*)(${this.#separatorRegex.source})$`,'g');
+            formattedValue = unformattedValue.replace(/([0-9]{4})/g, `$1${this.#separatorString}`).replace(trailingSepratorRemover, '$1');
         }
         if (this.inputType == InputTypes.ShabaNumber) {
             unformattedValue = this.getUnformattedValue(valueString);
             const matches = /(IR[0-9]{0,2})([0-9]{0,4})([0-9]{0,4})([0-9]{0,4})([0-9]{0,4})([0-9]{0,4})([0-9]{0,2})/g.exec(unformattedValue);
             if (matches && matches.length > 0) {
-                formattedValue = matches.slice(1).filter(x => x !== '').join(' ');
+                formattedValue = matches.slice(1).filter(x => x !== '').join(this.#separatorString);
             } else {
                 formattedValue = unformattedValue;
             }
@@ -170,7 +193,7 @@ export class JBPaymentInputWebComponent extends HTMLElement {
         this.value = this.getAttribute('value') || '';
     }
     static get observedAttributes() {
-        return ['label', 'input-type', 'message', 'value', 'name', 'autocomplete', 'placeholder', 'disabled', 'inputmode'];
+        return ['label', 'input-type', 'message', 'value', 'name', 'autocomplete', 'placeholder', 'disabled', 'inputmode', 'separator'];
     }
     attributeChangedCallback(name:string, oldValue:string, newValue:string) {
         // do something when an attribute has changed
@@ -218,6 +241,10 @@ export class JBPaymentInputWebComponent extends HTMLElement {
                 break;
             case 'inputmode':
                 this.elements.input.setAttribute("inputmode", value);
+                break;
+            case 'separator':
+                this.separatorString = value;
+                break;
 
         }
 
@@ -274,7 +301,7 @@ export class JBPaymentInputWebComponent extends HTMLElement {
     * @param {InputEvent} e
     */
     onInputBeforeInput(e:InputEvent) {
-        const inputedText = e.data;
+        //const inputedText = e.data;
         this.dispatchBeforeInputEvent(e);
     }
     dispatchBeforeInputEvent(e) {
@@ -336,7 +363,7 @@ export class JBPaymentInputWebComponent extends HTMLElement {
         this.dispatchEvent(event);
     }
     triggerInputValidation(showError = true) {
-        return this.elements.input.triggerInputValidation(showError);
+        return this.elements.input.checkValidity(showError);
     }
     /**
      * @public

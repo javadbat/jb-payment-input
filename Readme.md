@@ -98,6 +98,16 @@ document.getElementByTagName('jb-payment-input').addEventListener('beforeinput',
 // when user press enter on keyboard(dispatched on onKeyup)
 document.getElementByTagName('jb-payment-input').addEventListener('enter',(event)=>{console.log(event.target.value)});
 ```
+### separator (devider) string
+payment input by default use space to separate part of card number or shaba number. for example it will show `1234123412341234` as `1234 1234 1234 1234` but you can change it to what char or even string you want for eample devide it by `-` and you will see `1234-1234-1234-1234`.    
+to make this happen you just have to set `separator` attribute in html or set `separatorString` property with js.
+```html
+<jb-payment-input separator="-" input-type="CARD_NUMBER"></jb-payment-input>
+```
+or
+```js
+document.getElementByTagName('jb-payment-input').separatorString = "";
+```
 ### other attribute
 
 | atribute name  | description                                                                                                         |
