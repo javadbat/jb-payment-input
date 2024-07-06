@@ -50,7 +50,7 @@ export class JBPaymentInputWebComponent extends HTMLElement {
   }
   set validationList(value) {
     if (Array.isArray(value)) {
-      this.elements.input.validationList = value;
+      this.elements.input.validation.list = value;
       this.#validationList = value;
     }
   }
@@ -412,9 +412,7 @@ export class JBPaymentInputWebComponent extends HTMLElement {
     this.dispatchOnChangeEvent();
   }
   dispatchOnChangeEvent() {
-    const validationObject = this.elements.input.checkInputValidation(
-      this.value
-    );
+    const validationObject = this.elements.input.validation.checkValidity();
     const event = new CustomEvent("change", {
       detail: {
         isValid: validationObject.isAllValid,
@@ -424,7 +422,7 @@ export class JBPaymentInputWebComponent extends HTMLElement {
     this.dispatchEvent(event);
   }
   triggerInputValidation(showError = true) {
-    return this.elements.input.checkValidity(showError);
+    return this.elements.input.validation.checkValidity(showError);
   }
   /**
    * @public
