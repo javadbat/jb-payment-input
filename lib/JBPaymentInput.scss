@@ -1,9 +1,0 @@
-:host(:focus), :host(:focus-visible){
-    outline: none;
-}
-.jb-card-number-web-component{
-    --jb-input-input-direction: ltr;
-    &:focus-visible{
-        outline: none;
-    }
-}

@@ -14,9 +14,10 @@ payment input web component for 16 digit card number and shaba number with this 
 
 - will accept persian/arabic number char and convert them to english char
 
-- you can add iran bank image beside input to show which bank card number is inputed.
+- you can add iran bank image beside input to show which bank card number is inputted.
 
-this component use `jb-input` as a dependancy so you can customize it's style by jb-input css variables.
+this superset component on [jb-input](https://github.com/javadbat/jb-input) , just for payment info input with extra filter and ready to use validator
+
 ## Demo   
 Demo & Sample in codepen: <https://codepen.io/javadbat/pen/rNvWdve>
 ## instructions
@@ -40,21 +41,21 @@ import 'jb-payment-input';
 3- use compoent in your html or jsx file like any other html tag
 
 ```html
-<jb-payment-input input-type="CARD_NUMBER" class="" label="card number:" message="subtitle of input box"></jb-input>
+<jb-payment-input input-type="CARD" class="" label="card number:" message="subtitle of input box"></jb-input>
 ```
 #### using cdn
 
 1- add script tag to your html file.
 
 ```HTML
-<script src="https://unpkg.com/jb-input/dist/JBInput.umd.js"></script>
-<script src="https://unpkg.com/jb-payment-input/dist/JBPaymentInput.umd.js"></script>
+<script src="https://unpkg.com/jb-input/dist/jb-input.umd.js"></script>
+<script src="https://unpkg.com/jb-payment-input/dist/jb-payment-info.umd.js"></script>
 ```
 2- use web component like any other html tag whenever you need
 
 ```html
 <div class="some-app-div">
-  <jb-payment-input input-type="CARD_NUMBER" class="" label="card number:" message="subtitle of input box"></jb-payment-input>
+  <jb-payment-input input-type="CARD" class="" label="card number:" message="subtitle of input box"></jb-payment-input>
 </div>
 ```
 ### get/set value
@@ -74,7 +75,7 @@ import 'jb-payment-input/dist/bank-indicator/bank-indicator.js';
 ### set custom style
 | css variable name          | description                                      |
 | -----------------          | -----------                                      |
-| --bank-indicator-padding   | banl logo padding,the default value is `8px 16px`|
+| --bank-indicator-padding   | bank logo padding,the default value is `8px 16px`|
 ```html
  <jb-payment-input input-type="CARD_NUMBER" class="" label="card number:" message="with bank indicator">
    <bank-indicator slot="end-section"></bank-indicator>
@@ -98,26 +99,23 @@ document.getElementByTagName('jb-payment-input').addEventListener('beforeinput',
 // when user press enter on keyboard(dispatched on onKeyup)
 document.getElementByTagName('jb-payment-input').addEventListener('enter',(event)=>{console.log(event.target.value)});
 ```
-### separator (devider) string
+### separator (divider) string
 payment input by default use space to separate part of card number or shaba number. for example it will show `1234123412341234` as `1234 1234 1234 1234` but you can change it to what char or even string you want for eample devide it by `-` and you will see `1234-1234-1234-1234`.    
 to make this happen you just have to set `separator` attribute in html or set `separatorString` property with js.
 ```html
-<jb-payment-input separator="-" input-type="CARD_NUMBER"></jb-payment-input>
+<jb-payment-input separator="-" input-type="CARD"></jb-payment-input>
 ```
 or
 ```js
 document.getElementByTagName('jb-payment-input').separatorString = "";
 ```
 ### other attribute
+you may use all [jb-input](https://github.com/javadbat/jb-input) attribute + below attributes
 
-| atribute name  | description                                                                                                         |
-| -------------  | -------------                                                                                                       |
-| name           | name you want to set to actual input element `<jb-input name="username"></jb-input>`                                |
-| message        | in botton of input we show small message for example "user name must be at least 5 char"                            |
-| autocomplete   | set autocomplete directly into dom element in case you need it                                                      |
-| direction      | set web-component direction defualt set is rtl but if you need ltr use `<jb-input direction="ltr"></jb-input>`      |
-| disabled       | disable the input                                                                                                   |
-| input-type     | `CARD_NUMBER` for 16 card number and `SHABA_NUMBER` to type shaba number input                                      |
+| atribute name  | description                                                                                    |
+| -------------  | -------------                                                                                  |
+| input-type     | `CARD` for 16 card number and `SHABA` to type shaba number input                               |
+| separator      | separation char. default is ` `(space) but you can set any text you want like `-` or `_`       |
 
 ### set custom style
 
