@@ -41,7 +41,7 @@ import 'jb-payment-input';
 3- use compoent in your html or jsx file like any other html tag
 
 ```html
-<jb-payment-input input-type="CARD" class="" label="card number:" message="subtitle of input box"></jb-input>
+<jb-payment-input input-type="CARD" class="" label="card number:" message="subtitle of input box"></jb-payment-input>
 ```
 #### using cdn
 
