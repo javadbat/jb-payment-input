@@ -1,5 +1,5 @@
-import { ValidationItem } from "jb-input";
-import { JBInputValue } from "jb-input/lib/types";
+import { type ValidationItem } from "jb-input";
+import { type JBInputValue } from "jb-input/types";
 
 export const cardNumberLength:ValidationItem<JBInputValue> = {
   validator:({value})=>{
