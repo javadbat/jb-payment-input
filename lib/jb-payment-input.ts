@@ -1,6 +1,6 @@
 import CSS from "./jb-payment-input.scss";
 import "jb-input";
-import { PaymentInputType } from './Types1';
+import { PaymentInputType } from './types';
 // eslint-disable-next-line no-duplicate-imports
 import { JBInputWebComponent } from "jb-input";
 import { JBInputValue, ValidationValue } from "jb-input/types";
