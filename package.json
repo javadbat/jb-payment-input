@@ -12,10 +12,12 @@
     "number input",
     "card number",
     "shaba",
+    "شبا",
+    "شماره کارت",
     "iran bank",
     "web component"
   ],
-  "version": "2.2.0",
+  "version": "3.0.1",
   "bugs": "https://github.com/javadbat/jb-payment-input/issues",
   "license": "MIT",
   "files": [
@@ -29,7 +31,8 @@
   "typesVersions": {
     "*": {
       "*": ["./dist/web-component/jb-payment-input/lib/jb-payment-input.d.ts"],
-      "types":["./dist/web-component/jb-payment-input/lib/types.d.ts"]
+      "types":["./dist/web-component/jb-payment-input/lib/types.d.ts"],
+      "bank-indicator-types":["./dist/bank-indicator/web-component/jb-payment-input/lib/jb-payment-input.d.ts"]
     }
   },
   "repository": {
@@ -37,6 +40,6 @@
 		"url": "git@github.com:javadbat/jb-payment-input.git"
   },
   "dependencies": {
-    "jb-input": ">=2.5.0"
+    "jb-input": ">=3.0.1"
   }
 }

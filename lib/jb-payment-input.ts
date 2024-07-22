@@ -31,8 +31,7 @@ export class JBPaymentInputWebComponent extends JBInputWebComponent implements W
           //will replace every regex meaningful char with \\ prefix to disable its meaningful functions
           .replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
           .replace(/\s/g, "\\s"),
-        "g"
-      );
+        "g");
       //fix prev value display on char update
       const sVal = this.standardValue(this.value);
       this.elements.input.value = sVal.displayValue;

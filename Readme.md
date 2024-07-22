@@ -8,13 +8,15 @@ payment input web component for 16 digit card number and shaba number with this 
 
 - support both RTL and LTR.
 
-- add label and message in UX frienly format.
+- add label and message in UX friendly format.
 
 - customizable ui with css variable so you can have multiple style in different scope of your app.
 
 - will accept persian/arabic number char and convert them to english char
 
 - you can add iran bank image beside input to show which bank card number is inputted.
+
+- support smart paste so user can copy text that contains irrelevant words beside card number but we will extract card number from the text.  
 
 this superset component on [jb-input](https://github.com/javadbat/jb-input) , just for payment info input with extra filter and ready to use validator
 
@@ -38,7 +40,7 @@ import 'jb-payment-input';
 
 ```
 
-3- use compoent in your html or jsx file like any other html tag
+3- use component in your html or jsx file like any other html tag
 
 ```html
 <jb-payment-input input-type="CARD" class="" label="card number:" message="subtitle of input box"></jb-payment-input>
@@ -77,7 +79,7 @@ import 'jb-payment-input/dist/bank-indicator/bank-indicator.js';
 | -----------------          | -----------                                      |
 | --bank-indicator-padding   | bank logo padding,the default value is `8px 16px`|
 ```html
- <jb-payment-input input-type="CARD_NUMBER" class="" label="card number:" message="with bank indicator">
+ <jb-payment-input input-type="CARD" class="" label="card number:" message="with bank indicator">
    <bank-indicator slot="end-section"></bank-indicator>
  </jb-payment-input>
 ```
@@ -100,7 +102,7 @@ document.getElementByTagName('jb-payment-input').addEventListener('beforeinput',
 document.getElementByTagName('jb-payment-input').addEventListener('enter',(event)=>{console.log(event.target.value)});
 ```
 ### separator (divider) string
-payment input by default use space to separate part of card number or shaba number. for example it will show `1234123412341234` as `1234 1234 1234 1234` but you can change it to what char or even string you want for eample devide it by `-` and you will see `1234-1234-1234-1234`.    
+payment input by default use space to separate part of card number or shaba number. for example it will show `1234123412341234` as `1234 1234 1234 1234` but you can change it to what char or even string you want for example divide it by `-` and you will see `1234-1234-1234-1234`.    
 to make this happen you just have to set `separator` attribute in html or set `separatorString` property with js.
 ```html
 <jb-payment-input separator="-" input-type="CARD"></jb-payment-input>
