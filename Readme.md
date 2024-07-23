@@ -72,12 +72,16 @@ document.getElementByTagName('jb-payment-input').value = "new string";
 for card number input you can add bank icon in the start or end of input (currently only support iran banks) so when user type first 6 digit of card number it will show bank logo.    
 to make this happen you just have to import and add `bank-indicator` web component
 ```js
-import 'jb-payment-input/dist/bank-indicator/bank-indicator.js';
+import 'jb-payment-input/bank-indicator';
+//or for umd import in some edge cases
+import 'jb-payment-input/dist/bank-indicator/bank-indicator.umd.js';
 ```
 ### set custom style
+
 | css variable name          | description                                      |
 | -----------------          | -----------                                      |
 | --bank-indicator-padding   | bank logo padding,the default value is `8px 16px`|
+
 ```html
  <jb-payment-input input-type="CARD" class="" label="card number:" message="with bank indicator">
    <bank-indicator slot="end-section"></bank-indicator>
@@ -90,7 +94,7 @@ if you want to use bank-indicator outside of jb-payment-input you can set `prefi
    <bank-indicator prefix="603799"></bank-indicator>
 ```
 ### events
-
+this component use `jb-input` events for example you can use these events or more:
 ```js
 document.getElementByTagName('jb-payment-input').addEventListener('change',(event)=>{console.log(event.target.value)});
 document.getElementByTagName('jb-payment-input').addEventListener('keyup',(event)=>{console.log(event.target.value)});
@@ -110,6 +114,39 @@ to make this happen you just have to set `separator` attribute in html or set `s
 or
 ```js
 document.getElementByTagName('jb-payment-input').separatorString = "";
+```
+### validation
+
+you can set custom validation to your input like any other jb design system component by 
+
+``` javascript
+    const validationList = [
+        {
+            validator: /.{3}/g,
+            message: 'عنوان حداقل باید سه کاکتر طول داشته باشد'
+        },
+        //you can use function as a validator too
+        {
+            validator: ({displayValue,value})=>{return value !== "50413731111111"},
+            message: 'this id card in banned'
+        },
+        {
+            validator: ({displayValue,value})=>{
+                if(value.startsWith('11111111')){
+                    return 'we dont accept foo bank cards'
+                }
+                if(displayValue.startsWith('2222 2222')){
+                    return 'we dont accept bar bank cards'
+                }
+                if(value.startsWith('3333')){
+                    return false
+                }
+                return true
+            },
+            message: 'default message when return false'
+        },
+    ]
+    document.getElementByTagName('jb-payment-input').validation.list = validationList;
 ```
 ### other attribute
 you may use all [jb-input](https://github.com/javadbat/jb-input) attribute + below attributes

@@ -101,9 +101,12 @@ export class JBPaymentInputWebComponent extends JBInputWebComponent implements W
             }
           }
           if (irPart.length == 1) {
-            return irPart;
+            if(numberPart.length > 0){
+              irPart = "IR";
+            }else{
+              return irPart;
+            }
           }
-  
           return irPart + numberPart;
         } else {
           return "";
@@ -127,13 +130,13 @@ export class JBPaymentInputWebComponent extends JBInputWebComponent implements W
     // console.log({inputType:this.inputType});
     if (this.#paymentInputType == "CARD") {
       value = this.#getPaymentValueString(valueString);
-      const trailingSepratorRemover = RegExp(
+      const trailingSeparatorRemover = RegExp(
         `(.*)(${this.#separatorRegex.source})$`,
         "g"
       );
       displayValue = value
         .replace(/([0-9]{4})/g, `$1${this.#separatorString}`)
-        .replace(trailingSepratorRemover, "$1");
+        .replace(trailingSeparatorRemover, "$1");
     }
     if (this.#paymentInputType == "SHABA") {
       value = this.#getPaymentValueString(valueString);
