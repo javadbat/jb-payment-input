@@ -17,7 +17,7 @@
     "iran bank",
     "web component"
   ],
-  "version": "3.0.4",
+  "version": "3.0.5",
   "bugs": "https://github.com/javadbat/jb-payment-input/issues",
   "license": "MIT",
   "files": [
@@ -35,8 +35,12 @@
     "import": "./dist/jb-payment-input.js",
     "require": "./dist/jb-payment-input.cjs.js"
   },
+  "./types":{
+    "types": "./dist/web-component/jb-payment-input/lib/types.d.ts",
+    "default":"./dist/web-component/jb-payment-input/lib/types.d.ts"
+  },
   "./bank-indicator": {
-    "types": "./dist/bank-indicator/web-component/jb-payment-input/lib/jb-payment-input.d.ts",
+    "types": "./dist/bank-indicator/web-component/jb-payment-input/lib/bank-indicator/bank-indicator.d.ts",
     "default": "./dist/bank-indicator/bank-indicator.js",
     "import":"./dist/bank-indicator/bank-indicator.js",
     "require":"./dist/bank-indicator/bank-indicator.cjs.js"
