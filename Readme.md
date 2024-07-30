@@ -151,10 +151,10 @@ you can set custom validation to your input like any other jb design system comp
 ### other attribute
 you may use all [jb-input](https://github.com/javadbat/jb-input) attribute + below attributes
 
-| atribute name  | description                                                                                    |
-| -------------  | -------------                                                                                  |
-| input-type     | `CARD` for 16 card number and `SHABA` to type shaba number input                               |
-| separator      | separation char. default is ` `(space) but you can set any text you want like `-` or `_`       |
+| attribute name  | description                                                                                    |
+| -------------   | -------------                                                                                  |
+| input-type      | `CARD` for 16 card number and `SHABA` to type shaba number input                               |
+| separator       | separation char. default is ` `(space) but you can set any text you want like `-` or `_`       |
 
 ### set custom style
 
