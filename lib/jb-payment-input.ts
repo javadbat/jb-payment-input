@@ -5,7 +5,7 @@ import { PaymentInputType } from './types';
 import { JBInputWebComponent } from "jb-input";
 import { JBInputValue, ValidationValue } from "jb-input/types";
 //TODO: update it when you move validation to core package
-import { type WithValidation, type ValidationItem } from "jb-input/types/validation";
+import { type WithValidation, type ValidationItem } from "jb-validation/types";
 import { faToEnDigits } from "../../../common/scripts/persian-helper";
 import { cardNumberLength, shabaFormat,shabaLength } from "./validation";
 //TODO: add barcode scanner or nfc reader
