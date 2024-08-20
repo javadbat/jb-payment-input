@@ -1,9 +1,9 @@
 import CSS from "./jb-payment-input.scss";
 import "jb-input";
-import { PaymentInputType } from './types';
+import { type PaymentInputType } from './types';
 // eslint-disable-next-line no-duplicate-imports
 import { JBInputWebComponent } from "jb-input";
-import { JBInputValue, ValidationValue } from "jb-input/types";
+import { type JBInputValue, type ValidationValue } from "jb-input/types";
 //TODO: update it when you move validation to core package
 import { type WithValidation, type ValidationItem } from "jb-validation/types";
 import { faToEnDigits } from "../../../common/scripts/persian-helper";
