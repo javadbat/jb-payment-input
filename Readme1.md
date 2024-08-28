@@ -165,7 +165,7 @@ since jb-payment-input use jb-input underneath, read [jb-input](https://github.c
 
 ## Other Related Docs:
 
-- see [jb-payment-input-react](https://github.com/javadbat/jb-payment-input-react) if you want to use this component in a react app
+- see [jb-payment-input-react](https://github.com/javadbat/jb-payment-input-react) if you want to use this component in a react app.
 
 - see [All JB Design system Component List](https://github.com/javadbat/design-system/blob/master/docs/component-list.md) for more components
 
