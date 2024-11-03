@@ -3,13 +3,12 @@ import "jb-input";
 import { type PaymentInputType } from './types';
 // eslint-disable-next-line no-duplicate-imports
 import { JBInputWebComponent } from "jb-input";
-import { type JBInputValue, type ValidationValue } from "jb-input/types";
-//TODO: update it when you move validation to core package
-import { type WithValidation, type ValidationItem } from "jb-validation/types";
+import { type JBInputValue } from "jb-input/types";
+import { type ValidationItem } from "jb-validation/types";
 import { faToEnDigits } from "../../../common/scripts/persian-helper";
 import { cardNumberLength, shabaFormat,shabaLength } from "./validation";
 //TODO: add barcode scanner or nfc reader
-export class JBPaymentInputWebComponent extends JBInputWebComponent implements WithValidation<ValidationValue> {
+export class JBPaymentInputWebComponent extends JBInputWebComponent {
     #paymentInputType: PaymentInputType = this.getAttribute("input-type") as PaymentInputType || "CARD";
     get paymentInputType() {
       return this.#paymentInputType;
