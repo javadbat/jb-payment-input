@@ -28,24 +28,6 @@
   ],
   "main": "index.js",
   "types": "./dist/web-component/jb-payment-input/lib/jb-payment-input.d.ts",
-  "exports": {
-  ".": {
-    "types": "./dist/web-component/jb-payment-input/lib/jb-payment-input.d.ts",
-    "default": "./dist/jb-payment-input.js",
-    "import": "./dist/jb-payment-input.js",
-    "require": "./dist/jb-payment-input.cjs.js"
-  },
-  "./types":{
-    "types": "./dist/web-component/jb-payment-input/lib/types.d.ts",
-    "default":"./dist/types.ts"
-  },
-  "./bank-indicator": {
-    "types": "./dist/bank-indicator/web-component/jb-payment-input/lib/bank-indicator/bank-indicator.d.ts",
-    "default": "./dist/bank-indicator/bank-indicator.js",
-    "import":"./dist/bank-indicator/bank-indicator.js",
-    "require":"./dist/bank-indicator/bank-indicator.cjs.js"
-  }
-},
   "repository": {
 		"type": "git",
 		"url": "git@github.com:javadbat/jb-payment-input.git"
