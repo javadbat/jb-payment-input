@@ -3,6 +3,7 @@ import CSS from './bank-indicator.scss';
 import { BankIndicatorElements, BankItem } from './types';
 import {allBankInfo} from './BankInfo';
 import creditCardIcon from './credit-card.svg';
+export * from './types';
 export class BankIndicatorWebComponent extends HTMLElement {
     elements!:BankIndicatorElements;
     bankInfo = allBankInfo;
@@ -24,11 +25,10 @@ export class BankIndicatorWebComponent extends HTMLElement {
       this.initWebComponent();
     }
     connectedCallback() {
-      // standard web component event that called when all of dom is binded
+      // standard web component event that called when all of dom is bounded
       this.callOnLoadEvent();
       this.initProp();
       this.callOnInitEvent();
-
     }
     callOnLoadEvent() {
       const event = new CustomEvent('load', { bubbles: true, composed: true });

@@ -1,5 +1,5 @@
 {
-  "name": "jb-payment-input",
+  "name": "bank-indicator",
   "description": "payment input web component",
   "type": "module",
   "author": {
@@ -18,7 +18,7 @@
     "iran bank",
     "web component"
   ],
-  "version": "3.0.6",
+  "version": "1.0.0",
   "bugs": "https://github.com/javadbat/jb-payment-input/issues",
   "license": "MIT",
   "files": [
@@ -28,12 +28,9 @@
     "dist/"
   ],
   "main": "index.js",
-  "types": "./dist/web-component/jb-payment-input/lib/jb-payment-input.d.ts",
+  "types": "/dist/web-component/jb-payment-input/bank-indicator/lib/bank-indicator.d.ts",
   "repository": {
 		"type": "git",
 		"url": "git@github.com:javadbat/jb-payment-input.git"
-  },
-  "dependencies": {
-    "jb-input": ">=3.0.5"
   }
 }

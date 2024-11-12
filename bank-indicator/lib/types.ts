@@ -1,4 +1,4 @@
-import {JBPaymentInputWebComponent} from '../jb-payment-input';
+import {JBPaymentInputWebComponent} from '../../lib/jb-payment-input';
 export type BankIndicatorElements = {
     bankImageWrapper: HTMLDivElement;
     PaymentInputParent:JBPaymentInputWebComponent | null;
