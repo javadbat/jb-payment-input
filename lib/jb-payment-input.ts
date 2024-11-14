@@ -2,9 +2,8 @@ import CSS from "./jb-payment-input.scss";
 import "jb-input";
 import { type PaymentInputType } from './types';
 // eslint-disable-next-line no-duplicate-imports
-import { JBInputWebComponent } from "jb-input";
-import { type JBInputValue } from "jb-input/types.js";
-import { type ValidationItem } from "jb-validation/types.js";
+import { JBInputWebComponent ,type JBInputValue} from "jb-input";
+import { type ValidationItem } from "jb-validation";
 import { faToEnDigits } from "../../../common/scripts/persian-helper";
 import { cardNumberLength, shabaFormat,shabaLength } from "./validation";
 //TODO: add barcode scanner or nfc reader
