@@ -1,1 +1,3 @@
-export type PaymentInputType = "CARD" | "SHABA";
+import { PaymentInputTypeList } from "./constants";
+
+export type PaymentInputType = typeof PaymentInputTypeList[number];

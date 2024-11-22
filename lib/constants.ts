@@ -1,0 +1,1 @@
+export const PaymentInputTypeList = ["CARD","SHABA"] as const;
