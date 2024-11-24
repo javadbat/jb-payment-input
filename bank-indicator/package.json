@@ -1,0 +1,35 @@
+{
+  "name": "bank-indicator",
+  "description": "iran bank indicator web component",
+  "private":true,
+  "type": "module",
+  "author": {
+		"name": "mohammad javad bathaei",
+		"email": "javadbat@gmail.com"
+	},
+  "sideEffects": true,
+  "keywords": [
+    "jb",
+    "jb-bank-indicator",
+    "card number",
+    "shaba",
+    "شبا",
+    "شماره کارت",
+    "iran bank",
+    "web component"
+  ],
+  "version": "1.0.0",
+  "bugs": "https://github.com/javadbat/jb-payment-input/issues",
+  "license": "MIT",
+  "files": [
+    "lib/",
+    "dist/",
+    "index.js"
+  ],
+  "main": "index.js",
+  "types": "./dist/web-component/jb-payment-input/bank-indicator/lib/bank-indicator.d.ts",
+  "repository": {
+		"type": "git",
+		"url": "git@github.com:javadbat/jb-payment-input.git"
+  }
+}
