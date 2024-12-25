@@ -35,7 +35,7 @@ export class JBPaymentInputWebComponent extends JBInputWebComponent {
         .replace(/\s/g, "\\s"),
       "g");
     //fix prev value display on char update
-    const sVal = this.standardValue(this.value);
+    const sVal = this.standardValue(this.value,"SET_VALUE");
     this.elements.input.value = sVal.displayValue;
   }
   constructor() {

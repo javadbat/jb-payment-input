@@ -26,7 +26,12 @@
     "README.md",
     "lib/",
     "dist/",
-    "bank-indicator/"
+    "bank-indicator/",
+    "bank-indicator/dist/",
+    "react/",
+    "react/dist/",
+    "bank-indicator/react/",
+    "bank-indicator/react/dist/"
   ],
   "main": "index.js",
   "types": "./dist/web-component/jb-payment-input/lib/jb-payment-input.d.ts",
@@ -35,6 +40,6 @@
 		"url": "git@github.com:javadbat/jb-payment-input.git"
   },
   "dependencies": {
-    "jb-input": ">=3.2.3"
+    "jb-input": ">=3.6.0"
   }
 }

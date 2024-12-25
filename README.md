@@ -20,6 +20,11 @@ payment input web component for 16 digit card number and shaba number with this 
 
 this superset component on [jb-input](https://github.com/javadbat/jb-input) , just for payment info input with extra filter and ready to use validator
 
+
+## using with JS frameworks
+
+to use this component in **react** see [`jb-payment-input/react`](https://github.com/javadbat/jb-payment-input/tree/main/react);
+
 ## Demo   
 Demo & Sample in codepen: <https://codepen.io/javadbat/pen/rNvWdve>
 ## instructions
@@ -165,7 +170,7 @@ since jb-payment-input use jb-input underneath, read [jb-input](https://github.c
 
 ## Other Related Docs:
 
-- see [jb-payment-input-react](https://github.com/javadbat/jb-payment-input-react) if you want to use this component in a react app.
+- see [`jb-payment-input/react`](https://github.com/javadbat/jb-payment-input/tree/main/react) if you want to use this component in a react app.
 
 - see [All JB Design system Component List](https://github.com/javadbat/design-system/blob/master/docs/component-list.md) for more components
 

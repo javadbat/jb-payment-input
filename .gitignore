@@ -1,2 +1,4 @@
 dist/
 bank-indicator/dist/
+bank-indicator/react/dist/
+react/dist/
