@@ -2,8 +2,7 @@ import React, { useRef, useEffect, useState, useImperativeHandle } from 'react';
 import {BaseProps, useJBInputAttribute,useJBInputEvents} from 'jb-input/react';
 import 'jb-payment-input';
 // eslint-disable-next-line no-duplicate-imports
-import {JBPaymentInputWebComponent} from 'jb-payment-input';
-import {PaymentInputType} from 'jb-payment-input/types.js';
+import {JBPaymentInputWebComponent, PaymentInputType} from 'jb-payment-input';
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
