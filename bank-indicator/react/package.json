@@ -19,7 +19,7 @@
     "react component"
   ],
   "version": "1.0.0",
-  "bugs": "https://github.com/javadbat/jb-payment-input-react/issues",
+  "bugs": "https://github.com/javadbat/jb-payment-input/issues",
   "license": "MIT",
   "files": [
     "LICENSE",
@@ -30,7 +30,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com:javadbat/jb-payment-input-react.git"
+    "url": "git@github.com:javadbat/jb-payment-input.git"
   },
   "types": "./dist/web-component/jb-payment-input/bank-indicator/react/lib/BankIndicator.d.ts"
 }
