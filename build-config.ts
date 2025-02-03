@@ -4,11 +4,11 @@ export const webComponentList: WebComponentBuildConfig[] = [
   {
     name: "bank-indicator",
     path: "./bank-indicator/lib/bank-indicator.ts",
-    outputPath:"./bank-indicator/dist/bank-indicator.js",
+    outputPath: "./bank-indicator/dist/bank-indicator.js",
     umdName: "BankIndicator",
     external: [],
     globals: {},
-    tsconfigPath: "web-component/jb-payment-input/tsconfig.json"
+    tsConfigPath: "./tsconfig.json"
   },
   {
     name: "jb-payment-input",
@@ -34,17 +34,21 @@ export const reactComponentList: ReactComponentBuildConfig[] = [
       "jb-input-react": "JBInputReact",
       "jb-payment-input": "JBPaymentInput"
     },
+    umdName: "JBPaymentInputReact",
+    dir: "./react"
   },
   {
     name: "bank-indicator-react",
     path: "./bank-indicator/react/lib/BankIndicator.tsx",
     outputPath: "./bank-indicator/react/dist/BankIndicator.js",
     external: ["jb-payment-input", 'jb-payment-input/bank-indicator', "prop-types", "react"],
-    tsconfigPath: "web-component/jb-payment-input/react/tsconfig.json",
+    tsConfigPath: "./react/tsconfig.json",
     globals: {
       react: "React",
       "prop-types": "PropTypes",
       "jb-payment-input": "JBPaymentInput"
     },
+    umdName: "JBBankIndicatorReact",
+    dir: "./react"
   },
 ];
