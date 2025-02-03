@@ -8,7 +8,8 @@ export const webComponentList: WebComponentBuildConfig[] = [
     umdName: "BankIndicator",
     external: [],
     globals: {},
-    tsConfigPath: "./tsconfig.json"
+    tsConfigPath: "./tsconfig.json",
+    dir: "./bank-indicator",
   },
   {
     name: "jb-payment-input",
@@ -49,6 +50,6 @@ export const reactComponentList: ReactComponentBuildConfig[] = [
       "jb-payment-input": "JBPaymentInput"
     },
     umdName: "JBBankIndicatorReact",
-    dir: "./react"
+    dir: "./bank-indicator/react",
   },
 ];
