@@ -129,7 +129,6 @@ export class JBPaymentInputWebComponent extends JBInputWebComponent {
   #standardPaymentValue(valueString: string): JBInputValue {
     let displayValue = "";
     let value = "";
-    console.log({ inputType: this.#paymentInputType });
     if (this.#paymentInputType == "CARD") {
       value = this.#getPaymentValueString(valueString);
       const trailingSeparatorRemover = RegExp(
