@@ -4,7 +4,7 @@ import { type PaymentInputType } from './types';
 // eslint-disable-next-line no-duplicate-imports
 import { JBInputWebComponent, type JBInputValue } from "jb-input";
 import { type ValidationItem } from "jb-validation";
-import { faToEnDigits } from "../../../common/scripts/persian-helper";
+import { faToEnDigits } from "jb-core";
 import { cardNumberLength, shabaFormat, shabaLength } from "./validation.js";
 import { PaymentInputTypeList } from "./constants.js";
 export * from './types.js';
