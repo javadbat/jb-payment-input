@@ -33,7 +33,8 @@ export const reactComponentList: ReactComponentBuildConfig[] = [
       react: "React",
       "prop-types": "PropTypes",
       "jb-input-react": "JBInputReact",
-      "jb-payment-input": "JBPaymentInput"
+      "jb-payment-input": "JBPaymentInput",
+      
     },
     umdName: "JBPaymentInputReact",
     dir: "./react"
@@ -47,7 +48,8 @@ export const reactComponentList: ReactComponentBuildConfig[] = [
     globals: {
       react: "React",
       "prop-types": "PropTypes",
-      "jb-payment-input": "JBPaymentInput"
+      "jb-payment-input": "JBPaymentInput",
+      "jb-payment-input/bank-indicator": "BankIndicator",
     },
     umdName: "JBBankIndicatorReact",
     dir: "./bank-indicator/react",
