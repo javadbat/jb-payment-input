@@ -8,7 +8,6 @@ export const webComponentList: WebComponentBuildConfig[] = [
     umdName: "BankIndicator",
     external: [],
     globals: {},
-    tsConfigPath: "./tsconfig.json",
     dir: "./bank-indicator",
   },
   {
@@ -44,7 +43,6 @@ export const reactComponentList: ReactComponentBuildConfig[] = [
     path: "./bank-indicator/react/lib/BankIndicator.tsx",
     outputPath: "./bank-indicator/react/dist/BankIndicator.js",
     external: ["jb-payment-input", 'jb-payment-input/bank-indicator', "prop-types", "react"],
-    tsConfigPath: "./react/tsconfig.json",
     globals: {
       react: "React",
       "prop-types": "PropTypes",

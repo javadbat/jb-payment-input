@@ -1,16 +1,16 @@
 {
     "compilerOptions": {
         "baseUrl": ".",
-        "rootDir": "./lib",
+        "rootDir": "./lib"
     },
     "include": [
         "lib/**/*.ts",
-        "lib/**/*.tsx"
+        "../../global.d.ts",
     ],
     "exclude": [
         "node_modules",
         "**/*.spec.ts",
         "dist",
     ],
-    "extends":"jb-core/configs/tsconfig-react.json"
+    "extends":"jb-core/configs/tsconfig-web-component.json"
 }

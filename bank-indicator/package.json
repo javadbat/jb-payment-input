@@ -27,9 +27,12 @@
     "index.js"
   ],
   "main": "index.js",
-  "types": "./dist/web-component/jb-payment-input/bank-indicator/lib/bank-indicator.d.ts",
+  "types": "./dist/bank-indicator.d.ts",
   "repository": {
 		"type": "git",
 		"url": "git@github.com:javadbat/jb-payment-input.git"
+  },
+  "dependencies": {
+    "jb-core":">=0.3.0"
   }
 }
