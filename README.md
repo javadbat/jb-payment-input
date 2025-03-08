@@ -1,5 +1,9 @@
 # jb-payment-input
 
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/jb-payment-input)
+[![GitHub license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://raw.githubusercontent.com/javadbat/jb-payment-input/main/LICENSE)
+[![NPM Downloads](https://img.shields.io/npm/dw/jb-payment-input)](https://www.npmjs.com/package/jb-payment-input)
+
 payment input web component for 16 digit card number and shaba number with this benefit:
 
 - easy to add custom regex or function validation.
@@ -18,7 +22,7 @@ payment input web component for 16 digit card number and shaba number with this 
 
 - support smart paste so user can copy text that contains irrelevant words beside card number but we will extract card number from the text.  
 
-this superset component on [jb-input](https://github.com/javadbat/jb-input) , just for payment info input with extra filter and ready to use validator
+this component is a superset component on [jb-input](https://github.com/javadbat/jb-input) , just for payment info input with extra filter and ready to use validator
 
 
 ## using with JS frameworks
