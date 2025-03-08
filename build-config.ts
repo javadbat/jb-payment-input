@@ -17,8 +17,10 @@ export const webComponentList: WebComponentBuildConfig[] = [
     path: "./bank-indicator/lib/bank-indicator.ts",
     outputPath: "./bank-indicator/dist/bank-indicator.js",
     umdName: "BankIndicator",
-    external: [],
-    globals: {},
+    external: ["jb-payment-input"],
+    globals: {
+      "jb-payment-input":"JBPaymentInput"
+    },
     dir: "./bank-indicator",
   },
 ];
