@@ -2,15 +2,6 @@ import type { ReactComponentBuildConfig, WebComponentBuildConfig } from "../../t
 
 export const webComponentList: WebComponentBuildConfig[] = [
   {
-    name: "bank-indicator",
-    path: "./bank-indicator/lib/bank-indicator.ts",
-    outputPath: "./bank-indicator/dist/bank-indicator.js",
-    umdName: "BankIndicator",
-    external: [],
-    globals: {},
-    dir: "./bank-indicator",
-  },
-  {
     name: "jb-payment-input",
     path: "./lib/jb-payment-input.ts",
     outputPath: "./dist/jb-payment-input.js",
@@ -20,6 +11,15 @@ export const webComponentList: WebComponentBuildConfig[] = [
       "jb-input": "JBInput",
       "jb-validation": "JBValidation"
     },
+  },
+  {
+    name: "bank-indicator",
+    path: "./bank-indicator/lib/bank-indicator.ts",
+    outputPath: "./bank-indicator/dist/bank-indicator.js",
+    umdName: "BankIndicator",
+    external: [],
+    globals: {},
+    dir: "./bank-indicator",
   },
 ];
 export const reactComponentList: ReactComponentBuildConfig[] = [
