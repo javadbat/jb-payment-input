@@ -33,6 +33,7 @@
 		"url": "git@github.com:javadbat/jb-payment-input.git"
   },
   "dependencies": {
-    "jb-core":">=0.4.0"
+    "jb-core":">=0.4.0",
+    "jb-payment-input": ">=3.2.0"
   }
 }
