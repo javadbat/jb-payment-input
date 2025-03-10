@@ -3,9 +3,9 @@ import AyandehLogo from './logo/Ayandeh.svg';
 import DayLogo from './logo/Day.svg';
 import EghtesadNovinLogo from './logo/EghtesadNovin.svg';
 import GardeshgariLogo from './logo/Gardeshgari.svg';
-import IranzaminLogo from './logo/IranZamin.svg';
+import IranzaminLogo from './logo/Iranzamin.svg';
 import KarafarinLogo from './logo/Karafarin.svg';
-import keshavarziLogo from './logo/Keshavarzi.svg';
+import keshavarziLogo from './logo/keshavarzi.svg';
 import MaskanLogo from './logo/Maskan.svg';
 import MehrLogo from './logo/MehrIran.svg';
 import MellatLogo from './logo/Mellat.svg';
@@ -28,7 +28,7 @@ import KhavarmianehBankLogo from './logo/KhavarMianeh.svg';
 import BlueBankLogo from './logo/BluBank.svg';
 import ResalatBankLogo from './logo/Resalat.svg';
 import MelalBankLogo from './logo/Melall.svg';
-import MarkaziLogo from './logo/markazi.svg';
+import MarkaziLogo from './logo/Markazi.svg';
 //use dynamic import when you really want a lazy load logo later after good support
 // const logoImport = async function(name){
 //     return await import(`./logo/${name}.svg`);
