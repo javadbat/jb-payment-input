@@ -18,7 +18,15 @@ export const CardNumber: Story = {
     value: "",
     inputType: "CARD"
   }
-}
+};
+export const RequiredCardNumber: Story = {
+  args: {
+    label: 'card number',
+    message: "please input 16 digit card number",
+    inputType: "CARD",
+    required:true
+  }
+};
 export const ShabaNumber: Story = {
   args: {
     label: 'shaba number',
