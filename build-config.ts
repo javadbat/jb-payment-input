@@ -6,10 +6,11 @@ export const webComponentList: WebComponentBuildConfig[] = [
     path: "./lib/jb-payment-input.ts",
     outputPath: "./dist/jb-payment-input.js",
     umdName: "JBPaymentInput",
-    external: ["jb-input", "jb-validation"],
+    external: ["jb-input", "jb-validation", "jb-core"],
     globals: {
       "jb-input": "JBInput",
-      "jb-validation": "JBValidation"
+      "jb-validation": "JBValidation",
+      "jb-core":"JBCore"
     },
   },
   {
@@ -29,9 +30,10 @@ export const reactComponentList: ReactComponentBuildConfig[] = [
     name: "jb-payment-input-react",
     path: "./react/lib/JBPaymentInput.tsx",
     outputPath: "./react/dist/JBPaymentInput.js",
-    external: ["jb-payment-input", "jb-input-react", "prop-types", "react"],
+    external: ["jb-input","jb-payment-input", "jb-input-react", "prop-types", "react", "jb-core"],
     globals: {
       react: "React",
+      "jb-input":"JBInput",
       "prop-types": "PropTypes",
       "jb-input-react": "JBInputReact",
       "jb-payment-input": "JBPaymentInput",
