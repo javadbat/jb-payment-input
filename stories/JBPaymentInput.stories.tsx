@@ -5,7 +5,7 @@ import { BankIndicator } from 'jb-payment-input/bank-indicator/react';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<Props> = {
-  title: "Example/form elements/Inputs/JBPaymentInput",
+  title: "Components/form elements/Inputs/JBPaymentInput",
   component: JBPaymentInput,
 };
 export default meta;
