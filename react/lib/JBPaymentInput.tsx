@@ -8,9 +8,9 @@ declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace JSX {
     interface IntrinsicElements {
-      'jb-payment-input': JBSearchbarType;
+      'jb-payment-input': JBPaymentInputType;
     }
-     interface JBSearchbarType extends React.DetailedHTMLProps<React.HTMLAttributes<JBPaymentInputWebComponent>, JBPaymentInputWebComponent> {
+     interface JBPaymentInputType extends React.DetailedHTMLProps<React.HTMLAttributes<JBPaymentInputWebComponent>, JBPaymentInputWebComponent> {
       "class"?: string,
       "type"?: string,
       "label"?:string,
@@ -22,7 +22,6 @@ declare global {
 // eslint-disable-next-line react/display-name
 const JBPaymentInput = React.forwardRef((props:Props, ref) => {
   const element = useRef<JBPaymentInputWebComponent>(null);
-  const [refChangeCount, refChangeCountSetter] = useState(0);
 
   useImperativeHandle(
     ref,
@@ -30,9 +29,6 @@ const JBPaymentInput = React.forwardRef((props:Props, ref) => {
     [element],
   );
 
-  useEffect(() => {
-    refChangeCountSetter(refChangeCount + 1);
-  }, [element.current]);
 
   useJBInputAttribute(element,props);
   useJBInputEvents<JBPaymentInputWebComponent>(element,props);
