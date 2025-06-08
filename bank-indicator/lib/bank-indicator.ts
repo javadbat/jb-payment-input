@@ -1,8 +1,8 @@
-import HTML from './bank-indicator.html';
 import CSS from './bank-indicator.scss';
 import { BankIndicatorElements, BankItem } from './types';
 import {allBankInfo} from './BankInfo';
 import creditCardIcon from './credit-card.svg';
+import { renderHTML } from './render';
 export * from './types.js';
 export class BankIndicatorWebComponent extends HTMLElement {
     elements!:BankIndicatorElements;
@@ -43,7 +43,7 @@ export class BankIndicatorWebComponent extends HTMLElement {
         mode: 'open',
         delegatesFocus: true,
       });
-      const html = `<style>${CSS}</style>` + '\n' + HTML;
+      const html = `<style>${CSS}</style>` + '\n' + renderHTML();
       const element = document.createElement('template');
       element.innerHTML = html;
       shadowRoot.appendChild(element.content.cloneNode(true));
