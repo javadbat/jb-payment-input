@@ -1,9 +1,10 @@
+'use client';
 import React, { useRef, useEffect, useState, useImperativeHandle } from 'react';
 import 'jb-payment-input/bank-indicator';
 //@ts-ignore
 // eslint-disable-next-line no-duplicate-imports
 import type {BankIndicatorWebComponent} from 'jb-payment-input/bank-indicator';
-declare global {
+declare module "react" {
   // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace JSX {
     interface IntrinsicElements {

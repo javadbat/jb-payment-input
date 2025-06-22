@@ -1,10 +1,11 @@
+'use client';
 import React, { useRef, useEffect, useState, useImperativeHandle } from 'react';
 import {BaseProps, useJBInputAttribute,useJBInputEvents} from 'jb-input/react';
 import 'jb-payment-input';
 // eslint-disable-next-line no-duplicate-imports
 import {JBPaymentInputWebComponent, PaymentInputType} from 'jb-payment-input';
 
-declare global {
+declare module "react" {
   // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace JSX {
     interface IntrinsicElements {
