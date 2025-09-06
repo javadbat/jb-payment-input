@@ -30,7 +30,10 @@ this component is a superset component on [jb-input](https://github.com/javadbat
 to use this component in **react** see [`jb-payment-input/react`](https://github.com/javadbat/jb-payment-input/tree/main/react);
 
 ## Demo   
-Demo & Sample in codepen: <https://codepen.io/javadbat/pen/rNvWdve>
+
+-[codepen](https://codepen.io/javadbat/pen/rNvWdve)
+-[storybook](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput)
+
 ## instructions
 
 ### install
@@ -38,7 +41,8 @@ Demo & Sample in codepen: <https://codepen.io/javadbat/pen/rNvWdve>
 #### using npm
 
 1- install npm package
-```cmd
+
+```sh
 npm i jb-payment-input
 ```
 
