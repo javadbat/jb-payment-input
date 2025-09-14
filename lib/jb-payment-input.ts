@@ -1,4 +1,4 @@
-import CSS from "./jb-payment-input.scss";
+import CSS from "./jb-payment-input.css";
 import "jb-input";
 import { type PaymentInputType } from './types';
 // eslint-disable-next-line no-duplicate-imports

@@ -1,4 +1,4 @@
-import CSS from './bank-indicator.scss';
+import CSS from './bank-indicator.css';
 import { BankIndicatorElements, BankItem } from './types';
 import {allBankInfo} from './BankInfo';
 import creditCardIcon from './credit-card.svg';
