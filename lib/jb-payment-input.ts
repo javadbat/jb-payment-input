@@ -10,6 +10,7 @@ import { PaymentInputTypeList } from "./constants.js";
 export * from './types.js';
 export * from './constants.js';
 //TODO: add barcode scanner or nfc reader
+//TODO: convert shaba to IBAN and create country code list regex 
 export class JBPaymentInputWebComponent extends JBInputWebComponent {
   #paymentInputType: PaymentInputType = this.getAttribute("input-type") as PaymentInputType || "CARD";
   get paymentInputType() {

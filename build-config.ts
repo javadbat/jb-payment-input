@@ -6,11 +6,13 @@ export const webComponentList: WebComponentBuildConfig[] = [
     path: "./lib/jb-payment-input.ts",
     outputPath: "./dist/jb-payment-input.js",
     umdName: "JBPaymentInput",
-    external: ["jb-input", "jb-validation", "jb-core"],
+    external: ["jb-input", "jb-validation", "jb-core", "jb-core/i18n", "jb-core/theme"],
     globals: {
       "jb-input": "JBInput",
       "jb-validation": "JBValidation",
-      "jb-core":"JBCore"
+      "jb-core":"JBCore",
+      "jb-core/i18n":"JBCoreI18N",
+      "jb-core/theme":"JBCoreTheme"
     },
   },
   {

@@ -31,14 +31,13 @@ to use this component in **react** see [`jb-payment-input/react`](https://github
 
 ## Demo   
 
--[codepen](https://codepen.io/javadbat/pen/rNvWdve)
--[storybook](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput)
+- [codepen](https://codepen.io/javadbat/pen/rNvWdve)
+- [storybook](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput)
 
-## instructions
 
-### install
+## install
 
-#### using npm
+### using npm
 
 1- install npm package
 
@@ -58,7 +57,7 @@ import 'jb-payment-input';
 ```html
 <jb-payment-input input-type="CARD" class="" label="card number:" message="subtitle of input box"></jb-payment-input>
 ```
-#### using cdn
+### using cdn
 
 1- add script tag to your html file.
 
@@ -73,7 +72,8 @@ import 'jb-payment-input';
   <jb-payment-input input-type="CARD" class="" label="card number:" message="subtitle of input box"></jb-payment-input>
 </div>
 ```
-### get/set value
+
+## get/set value
 
 ```js
 //get value
@@ -81,7 +81,7 @@ const inputValue = document.getElementByTagName('jb-payment-input').value;
 //set value
 document.getElementByTagName('jb-payment-input').value = "new string";
 ```
-### add bank icons
+## add bank icons
 for card number input you can add bank icon in the start or end of input (currently only support iran banks) so when user type first 6 digit of card number it will show bank logo.    
 to make this happen you just have to import and add `bank-indicator` web component
 ```js
@@ -106,8 +106,11 @@ if you want to use bank-indicator outside of jb-payment-input you can set `prefi
    <!-- for example for melli card -->
    <bank-indicator prefix="603799"></bank-indicator>
 ```
-### events
+
+## events
+
 this component use `jb-input` events for example you can use these events or more:
+
 ```js
 document.getElementByTagName('jb-payment-input').addEventListener('change',(event)=>{console.log(event.target.value)});
 document.getElementByTagName('jb-payment-input').addEventListener('keyup',(event)=>{console.log(event.target.value)});
@@ -118,7 +121,9 @@ document.getElementByTagName('jb-payment-input').addEventListener('beforeinput',
 // when user press enter on keyboard(dispatched on onKeyup)
 document.getElementByTagName('jb-payment-input').addEventListener('enter',(event)=>{console.log(event.target.value)});
 ```
-### separator (divider) string
+
+## separator (divider) string
+
 payment input by default use space to separate part of card number or shaba number. for example it will show `1234123412341234` as `1234 1234 1234 1234` but you can change it to what char or even string you want for example divide it by `-` and you will see `1234-1234-1234-1234`.    
 to make this happen you just have to set `separator` attribute in html or set `separatorString` property with js.
 ```html
@@ -128,15 +133,16 @@ or
 ```js
 document.getElementByTagName('jb-payment-input').separatorString = "";
 ```
-### validation
+
+## validation
 
 you can set custom validation to your input like any other jb design system component by 
 
-``` javascript
+```js
     const validationList = [
         {
-            validator: /.{3}/g,
-            message: 'عنوان حداقل باید سه کاکتر طول داشته باشد'
+            validator: /^603799 .*$/g,
+            message: 'we only accept "melli" bank'
         },
         //you can use function as a validator too
         {
@@ -161,7 +167,7 @@ you can set custom validation to your input like any other jb design system comp
     ]
     document.getElementByTagName('jb-payment-input').validation.list = validationList;
 ```
-### other attribute
+## other attribute
 you may use all [jb-input](https://github.com/javadbat/jb-input) attribute + below attributes
 
 | attribute name  | description                                                                                    |
@@ -169,7 +175,7 @@ you may use all [jb-input](https://github.com/javadbat/jb-input) attribute + bel
 | input-type      | `CARD` for 16 card number and `SHABA` to type shaba number input                               |
 | separator       | separation char. default is ` `(space) but you can set any text you want like `-` or `_`       |
 
-### set custom style
+## set custom style
 
 in some cases in your project you need to change default style of web-component for example you need zero margin or different border-radius and etc.    
 if you want to set a custom style to this web-component all you need is to set css variable in parent scope of web-component.

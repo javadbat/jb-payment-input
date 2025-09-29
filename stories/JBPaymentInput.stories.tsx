@@ -39,7 +39,7 @@ export const ShabaNumber: Story = {
 export const CardNumberWithBankLogo: Story = {
   args: {
     label: 'card number',
-    message: "card number with bank logo",
+    message: "card number with bank logo (ex: start card with 603799 number to see melli bank logo)",
     value: "",
     inputType: "CARD",
     children: <BankIndicator slot="end-section" />
