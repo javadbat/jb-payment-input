@@ -1,0 +1,17 @@
+import {Meta, Title, Story, Controls, Stories} from '@storybook/blocks';
+import * as JBPaymentInput from './JBPaymentInput.stories';
+
+<Meta of={JBPaymentInput}/>
+
+<Title>JB Payment Input</Title>
+
+<p>An input for Card Number and Shaba number</p>
+<p>یک کامپوننت برای ورود شماره کارت و شماره شبا</p>
+
+## Card Number 
+<Story of={JBPaymentInput.CardNumber} />
+<Controls of={JBPaymentInput.CardNumber}/>
+
+## Shaba(IBAN) Number
+<Story of={JBPaymentInput.ShabaNumber} />
+<Controls of={JBPaymentInput.ShabaNumber}/>
