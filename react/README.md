@@ -19,7 +19,7 @@ payment info input `react component` with this benefit:
 ## Demo
 
 - [codeSandbox preview](https://3f63dj.csb.app/samples/jb-payment-input) for just see the demo and [codeSandbox editor](https://codesandbox.io/p/sandbox/jb-design-system-3f63dj?file=%2Fsrc%2Fsamples%2FJBPaymentInput.tsx) if you want to see and play with code
-- -[storybook](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput)
+- [storybook](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput)
 
 ## install
 
@@ -71,11 +71,11 @@ import {JBPaymentInput} from 'jb-payment-input/react';
 
 you can set validation to your input by creating a validationList array and passing in to `validationList` props:
 
-``` javascript
+```javascript
     const validationList = [
-        {
-            validator: /.{3}/g,
-            message: 'عنوان حداقل باید سه کاکتر طول داشته باشد'
+       {
+            validator: /^603799 .*$/g,
+            message: 'we only accept "melli" bank'
         },
         //you can use function as a validator too
         {
@@ -99,6 +99,7 @@ you can set validation to your input by creating a validationList array and pass
         },
     ]
 ```
+
 ```jsx
     <JBPaymentInput validationList={validationList}></JBPaymentInput>
 ```
@@ -106,17 +107,20 @@ you can set validation to your input by creating a validationList array and pass
 ## check validation
 
 you can check if an input value meet your validation standard by creating a ref of the element using `React.createRef()`.
+
 ```javascript
     const elementRef = React.createRef();
     const isValid = elementRef.current.validation.checkValidity(true).isAllValid;
 ```
+
 if `isValid` is `true` the value of input is valid.
 
 ### separator (divider) string
 payment input by default use space to separate part of card number or shaba number. for example it will show `1234123412341234` as `1234 1234 1234 1234` but you can change it to what char or even string you want for eample devide it by `-` and you will see `1234-1234-1234-1234`.    
 to make this happen you just have to set `separator` prop in jsx.
-```html
-<jbPaymentInput separator="-"></jbPaymentInput>
+
+```jsx
+<JBPaymentInput separator="-"></JBPaymentInput>
 ```
 
 ## other props
