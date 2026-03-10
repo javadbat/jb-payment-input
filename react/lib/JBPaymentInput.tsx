@@ -1,9 +1,9 @@
 'use client';
-import React, { useRef, useEffect, useState, useImperativeHandle } from 'react';
-import {BaseProps, useJBInputAttribute,useJBInputEvents} from 'jb-input/react';
+import React, { useRef, useEffect, useImperativeHandle } from 'react';
+import {type BaseProps, useJBInputAttribute,useJBInputEvents} from 'jb-input/react';
 import 'jb-payment-input';
 // eslint-disable-next-line no-duplicate-imports
-import {JBPaymentInputWebComponent, PaymentInputType} from 'jb-payment-input';
+import type {JBPaymentInputWebComponent, PaymentInputType} from 'jb-payment-input';
 
 declare module "react" {
   // eslint-disable-next-line @typescript-eslint/no-namespace
@@ -30,23 +30,23 @@ const JBPaymentInput = React.forwardRef((props:Props, ref) => {
     [element],
   );
 
-
-  useJBInputAttribute(element,props);
-  useJBInputEvents<JBPaymentInputWebComponent>(element,props);
-
-  useEffect(() => {
-    element.current.setAttribute('input-type', props.inputType);
-  }, [props.inputType]);
+  const {disabled,required,validationList,value,separator,inputType, children,onBeforeinput,onBlur,onChange,onEnter,onFocus,onInput,onKeydown,onKeyup, ...otherProps} = props;
+  useJBInputAttribute(element,{disabled,required,validationList,value,...otherProps});
+  useJBInputEvents<JBPaymentInputWebComponent>(element,{onBeforeinput,onBlur,onChange,onEnter,onFocus,onInput,onKeydown,onKeyup,...otherProps});
 
   useEffect(() => {
-    if( props.separator && typeof props.separator === "string" && props.separator !== ""){
-      element.current.separatorString = props.separator;
+    element.current.setAttribute('input-type', inputType);
+  }, [inputType]);
+
+  useEffect(() => {
+    if( separator && typeof separator === "string" && separator !== ""){
+      element.current.separatorString = separator;
     }
-  }, [props.separator]);
+  }, [separator]);
 
   return (
-    <jb-payment-input placeholder={props.placeholder?props.placeholder:''} ref={element} class={props.className?props.className:''} label={props.label?props.label:''} message={props.message?props.message:''}>
-      {props.children}
+    <jb-payment-input  ref={element} {...otherProps}>
+      {children}
     </jb-payment-input>
   );
 });

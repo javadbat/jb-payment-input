@@ -1,9 +1,8 @@
 'use client';
-import React, { useRef, useEffect, useState, useImperativeHandle } from 'react';
+import React, { useRef, useEffect, useImperativeHandle } from 'react';
 import 'jb-payment-input/bank-indicator';
-//@ts-ignore
-// eslint-disable-next-line no-duplicate-imports
-import type {BankIndicatorWebComponent} from 'jb-payment-input/bank-indicator';
+import type { JBElementStandardProps } from "jb-core/react"
+import type { BankIndicatorWebComponent } from 'jb-payment-input/bank-indicator';
 declare module "react" {
   // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace JSX {
@@ -16,31 +15,28 @@ declare module "react" {
   }
 }
 // eslint-disable-next-line react/display-name
-const BankIndicator = React.forwardRef((props:Props, ref) => {
+const BankIndicator = React.forwardRef((props: Props, ref) => {
   const element = useRef<BankIndicatorWebComponent>(null);
-  const [refChangeCount, refChangeCountSetter] = useState(0);
+
   useImperativeHandle(
     ref,
     () => (element ? element.current : {}),
     [element],
   );
+  const { prefix, children, ...otherProps } = props
   useEffect(() => {
-    refChangeCountSetter(refChangeCount + 1);
-  }, [element.current]);
-  useEffect(() => {
-    if( props.prefix && typeof props.prefix === "string" && props.prefix !== ""){
-      element.current?.setAttribute('prefix', props.prefix);
+    if (prefix && typeof prefix === "string" && prefix !== "") {
+      element.current?.setAttribute('prefix', prefix);
     }
-  }, [props.prefix]);
+  }, [prefix]);
   return (
-    <bank-indicator ref={element} class={props.className?props.className:''} slot={props.slot} />
+    <bank-indicator ref={element} {...otherProps} />
   );
 });
 
-export type Props = {
-  className?:string,
-  slot?:string,
-  prefix?:string
+type BankIndicatorProps = {
+  prefix?: string
 };
+export type Props = BankIndicatorProps & JBElementStandardProps<BankIndicatorWebComponent, keyof BankIndicatorProps>
 BankIndicator.displayName = "BankIndicator";
-export {BankIndicator};
+export { BankIndicator };
