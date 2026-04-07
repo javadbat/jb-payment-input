@@ -31,17 +31,19 @@ export class BankIndicatorWebComponent extends HTMLElement {
       this.callOnInitEvent();
     }
     callOnLoadEvent() {
-      const event = new CustomEvent('load', { bubbles: true, composed: true });
+      const event = new CustomEvent('load', { bubbles: true, composed: false });
       this.dispatchEvent(event);
     }
     callOnInitEvent() {
-      const event = new CustomEvent('init', { bubbles: true, composed: true });
+      const event = new CustomEvent('init', { bubbles: true, composed: false });
       this.dispatchEvent(event);
     }
     initWebComponent() {
       const shadowRoot = this.attachShadow({
         mode: 'open',
         delegatesFocus: true,
+        clonable:true,
+        serializable:true
       });
       const html = `<style>${CSS}</style>` + '\n' + renderHTML();
       const element = document.createElement('template');

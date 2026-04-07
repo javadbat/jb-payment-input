@@ -16,13 +16,13 @@ payment input web component for 16 digit card number and shaba number with this 
 
 - customizable ui with css variable so you can have multiple style in different scope of your app.
 
-- will accept persian/arabic number char and convert them to english char
+- will accept persian/arabic number char and convert them to english char.
 
 - you can add iran bank image beside input to show which bank card number is inputted.
 
 - support smart paste so user can copy text that contains irrelevant words beside card number but we will extract card number from the text.  
 
-this component is a superset component on [jb-input](https://github.com/javadbat/jb-input) , just for payment info input with extra filter and ready to use validator
+this component is a superset component on [jb-input](https://github.com/javadbat/jb-input) , just for payment info input with extra filter and ready to use validator.
 
 
 ## using with JS frameworks
