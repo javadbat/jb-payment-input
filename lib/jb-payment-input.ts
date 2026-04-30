@@ -48,7 +48,7 @@ export class JBPaymentInputWebComponent extends JBInputWebComponent {
     const html = `<style>${CSS}</style>`;
     const element = document.createElement("template");
     element.innerHTML = html;
-    this.shadowRoot.appendChild(element.content.cloneNode(true));
+    this.shadowRoot?.appendChild(element.content.cloneNode(true));
     this.validation.addValidationListGetter(this.#getPaymentInputValidations.bind(this));
     this.#addPaymentInputEventListeners();
     this.addStandardValueCallback(this.#standardPaymentValue.bind(this));
