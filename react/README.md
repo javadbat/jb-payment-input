@@ -15,7 +15,7 @@ payment info input `react component` with this benefit:
 
 - add label and message in UX friendly format.
 
-- customizable ui with css variable so you can have multiple style in different scope of your app.
+- customizable ui with CSS variable so you can have multiple style in different scope of your app.
 
 - support both card number and shaba number
 
@@ -24,8 +24,7 @@ payment info input `react component` with this benefit:
 - [codeSandbox preview](https://3f63dj.csb.app/samples/jb-payment-input) for just see the demo and [codeSandbox editor](https://codesandbox.io/p/sandbox/jb-design-system-3f63dj?file=%2Fsrc%2Fsamples%2FJBPaymentInput.tsx) if you want to see and play with code
 - [storybook](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput)
 
-## install
-
+## Installation
 ### using npm
 
 ``` sh
@@ -41,7 +40,7 @@ import {JBPaymentInput} from 'jb-payment-input/react';
 ```
 
 
-## events
+## Events
 - onChange
 ```jsx 
     <JBPaymentInput onChange={(event) => console.log(event.target.value)}></JBPaymentInput>
@@ -88,10 +87,10 @@ you can set validation to your input by creating a validationList array and pass
         {
             validator: ({displayValue,value})=>{
                 if(value.startsWith('11111111')){
-                    return 'we dont accept foo bank cards'
+                    return 'we don't accept foo bank cards'
                 }
                 if(displayValue.startsWith('2222 2222')){
-                    return 'we dont accept bar bank cards'
+                    return 'we don't accept bar bank cards'
                 }
                 if(value.startsWith('3333')){
                     return false
@@ -134,11 +133,15 @@ this component support all attributes comes from [`jb-input/react`](https://gith
 ## set custom style
 
 in some cases in your project you need to change default style of web-component for example you need zero margin or different border-radius and etc.    
-if you want to set a custom style to this web-component all you need is to set css variable in parent scope of web-component.
+if you want to set a custom style to this web-component all you need is to set CSS variable in parent scope of web-component.
 since jb-payment-input use jb-input underneath, read [jb-input](https://github.com/javadbat/jb-input) custom style list.
 
-## Other Related Docs:
 
+## Shared Documentation
+
+For web-component behavior, events, slots, and CSS variables, see [`jb-payment-input`](https://github.com/javadbat/jb-payment-input).
+
+## Related Docs
 - see [jb-payment-input](https://github.com/javadbat/jb-payment-input) if you want to use this component as a pure-js web-component
 
 - see [All JB Design system Component List](https://javadbat.github.io/design-system/) for more components

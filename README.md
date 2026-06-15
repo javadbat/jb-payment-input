@@ -15,7 +15,7 @@ payment input web component for 16 digit card number and shaba number with this 
 
 - add label and message in UX friendly format.
 
-- customizable ui with css variable so you can have multiple style in different scope of your app.
+- customizable ui with CSS variable so you can have multiple style in different scope of your app.
 
 - will accept persian/arabic number char and convert them to english char.
 
@@ -26,8 +26,7 @@ payment input web component for 16 digit card number and shaba number with this 
 this component is a superset component on [jb-input](https://github.com/javadbat/jb-input) , just for payment info input with extra filter and ready to use validator.
 
 
-## using with JS frameworks
-
+## Using With JS Frameworks
 - [<img src="https://img.shields.io/badge/React.js-jb--payment--input%2Freact-000.svg?logo=react&logoColor=%2361DAFB" height="30" />](https://github.com/javadbat/jb-payment-input/tree/main/react)
 
 ## Demo   
@@ -36,8 +35,7 @@ this component is a superset component on [jb-input](https://github.com/javadbat
 - [storybook](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput)
 
 
-## install
-
+## Installation
 ### using npm
 
 1- install npm package
@@ -92,9 +90,11 @@ import 'jb-payment-input/dist/bank-indicator/bank-indicator.umd.js';
 ```
 ### set custom style
 
-| css variable name          | description                                      |
+| CSS variable name          | description                                      |
 | -----------------          | -----------                                      |
 | --bank-indicator-padding   | bank logo padding,the default value is `8px 16px`|
+
+For standalone bank indicator usage, see [bank-indicator README](https://javadbat.github.io/design-system/?path=/docs/components-form-elements-inputs-jbpaymentinput-bank-indicator-readme--docs).
 
 ```html
  <jb-payment-input input-type="CARD" class="" label="card number:" message="with bank indicator">
@@ -108,8 +108,7 @@ if you want to use bank-indicator outside of jb-payment-input you can set `prefi
    <bank-indicator prefix="603799"></bank-indicator>
 ```
 
-## events
-
+## Events
 this component use `jb-input` events for example you can use these events or more:
 
 ```js
@@ -153,10 +152,10 @@ you can set custom validation to your input like any other jb design system comp
         {
             validator: ({displayValue,value})=>{
                 if(value.startsWith('11111111')){
-                    return 'we dont accept foo bank cards'
+                    return 'we don't accept foo bank cards'
                 }
                 if(displayValue.startsWith('2222 2222')){
-                    return 'we dont accept bar bank cards'
+                    return 'we don't accept bar bank cards'
                 }
                 if(value.startsWith('3333')){
                     return false
@@ -179,12 +178,15 @@ you may use all [jb-input](https://github.com/javadbat/jb-input) attribute + bel
 ## set custom style
 
 in some cases in your project you need to change default style of web-component for example you need zero margin or different border-radius and etc.    
-if you want to set a custom style to this web-component all you need is to set css variable in parent scope of web-component.
+if you want to set a custom style to this web-component all you need is to set CSS variable in parent scope of web-component.
 since jb-payment-input use jb-input underneath, read [jb-input](https://github.com/javadbat/jb-input) custom style list
 
+## Styling Dependencies
 
-## Other Related Docs:
+`jb-payment-input` uses `jb-input` and `bank-indicator` internally. Their CSS variables also apply when styling the payment input.
 
+
+## Related Docs
 - see [`jb-payment-input/react`](https://github.com/javadbat/jb-payment-input/tree/main/react) if you want to use this component in a react app.
 
 - see [All JB Design system Component List](https://javadbat.github.io/design-system/) for more components
