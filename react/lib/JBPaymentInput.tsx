@@ -22,7 +22,7 @@ declare module "react" {
 }
 // eslint-disable-next-line react/display-name
 const JBPaymentInput = React.forwardRef((props:Props, ref) => {
-  const element = useRef<JBPaymentInputWebComponent>(null);
+  const element = useRef<JBPaymentInputWebComponent>(null as unknown as JBPaymentInputWebComponent);
 
   useImperativeHandle(
     ref,
@@ -35,12 +35,14 @@ const JBPaymentInput = React.forwardRef((props:Props, ref) => {
   useJBInputEvents<JBPaymentInputWebComponent>(element,{onBeforeinput,onBlur,onChange,onEnter,onFocus,onInput,onKeydown,onKeyup,...otherProps});
 
   useEffect(() => {
-    element.current.setAttribute('input-type', inputType);
+    if (element.current) {
+      element.current.paymentInputType = inputType || "CARD";
+    }
   }, [inputType]);
 
   useEffect(() => {
-    if( separator && typeof separator === "string" && separator !== ""){
-      element.current.separatorString = separator;
+    if(element.current){
+      element.current.separatorString = typeof separator === "string" ? separator : " ";
     }
   }, [separator]);
 

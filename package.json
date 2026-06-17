@@ -26,6 +26,7 @@
   "files": [
     "LICENSE",
     "README.md",
+    "custom-elements.json",
     "lib/",
     "dist/",
     "bank-indicator/",
@@ -37,6 +38,7 @@
   ],
   "main": "index.js",
   "types": "./dist/jb-payment-input.d.ts",
+  "customElements": "custom-elements.json",
   "repository": {
 		"type": "git",
 		"url": "git@github.com:javadbat/jb-payment-input.git"

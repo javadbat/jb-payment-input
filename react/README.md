@@ -5,145 +5,115 @@
 [![NPM Version](https://img.shields.io/npm/v/jb-payment-input-react)](https://www.npmjs.com/package/jb-payment-input-react)
 ![GitHub Created At](https://img.shields.io/github/created-at/javadbat/jb-payment-input)
 
-payment info input `react component` with this benefit:
-
-- easy to add custom regex or function validation.
-
-- multiple validation with different message.
-
-- support both RTL and LTR.
-
-- add label and message in UX friendly format.
-
-- customizable ui with CSS variable so you can have multiple style in different scope of your app.
-
-- support both card number and shaba number
+React wrapper for [`jb-payment-input`](https://github.com/javadbat/jb-payment-input). It imports and registers the underlying web component and reuses `jb-input/react` behavior for shared input props and events.
 
 ## Demo
 
-- [codeSandbox preview](https://3f63dj.csb.app/samples/jb-payment-input) for just see the demo and [codeSandbox editor](https://codesandbox.io/p/sandbox/jb-design-system-3f63dj?file=%2Fsrc%2Fsamples%2FJBPaymentInput.tsx) if you want to see and play with code
-- [storybook](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput)
+- [CodeSandbox preview](https://3f63dj.csb.app/samples/jb-payment-input)
+- [CodeSandbox editor](https://codesandbox.io/p/sandbox/jb-design-system-3f63dj?file=%2Fsrc%2Fsamples%2FJBPaymentInput.tsx)
+- [Storybook](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput)
 
 ## Installation
-### using npm
 
-``` sh
+```sh
 npm i jb-payment-input
 ```
-in your jsx file
-```js
-import {JBPaymentInput} from 'jb-payment-input/react';
-```
-``` jsx
-<JBPaymentInput  label="card number" inputType="CARD"></JBPaymentInput>
-<JBPaymentInput  label="shaba number" inputType="SHABA"></JBPaymentInput>
-```
-
-
-## Events
-- onChange
-```jsx 
-    <JBPaymentInput onChange={(event) => console.log(event.target.value)}></JBPaymentInput>
-```
-- onKeyUp
-```jsx 
-    <JBPaymentInput onKeyUp={(event) => console.log(event.target.value)}></JBPaymentInput>
-```
-- onEnter
-```jsx
-    //when user press Enter button
-    <JBPaymentInput onEnter={(event) => console.log(event.target.value)}></JBPaymentInput>
-```
-- onKeydown
-```jsx 
-    <JBPaymentInput onKeydown={(event) => console.log(event.target.value)}></JBPaymentInput>
-```
-- onFocus
-```jsx 
-    <JBPaymentInput onFocus={(event) => console.log(event.target.value)}></JBPaymentInput>
-```
-- onBlur
-```jsx 
-    <JBPaymentInput onBlur={(event) => console.log(event.target.value)}></JBPaymentInput>
-```
-
-
-
-## set validation
-
-you can set validation to your input by creating a validationList array and passing in to `validationList` props:
-
-```javascript
-    const validationList = [
-       {
-            validator: /^603799 .*$/g,
-            message: 'we only accept "melli" bank'
-        },
-        //you can use function as a validator too
-        {
-            validator: ({displayValue,value})=>{return value !== "50413731111111"},
-            message: 'this id card in banned'
-        },
-        {
-            validator: ({displayValue,value})=>{
-                if(value.startsWith('11111111')){
-                    return 'we don't accept foo bank cards'
-                }
-                if(displayValue.startsWith('2222 2222')){
-                    return 'we don't accept bar bank cards'
-                }
-                if(value.startsWith('3333')){
-                    return false
-                }
-                return true
-            },
-            message: 'default message when return false'
-        },
-    ]
-```
 
 ```jsx
-    <JBPaymentInput validationList={validationList}></JBPaymentInput>
+import { JBPaymentInput } from 'jb-payment-input/react';
+
+<JBPaymentInput label="Card number (شماره کارت)" inputType="CARD" />;
+<JBPaymentInput label="SHABA number (شبا)" inputType="SHABA" />;
 ```
 
-## check validation
+## Props
 
-you can check if an input value meet your validation standard by creating a ref of the element using `React.createRef()`.
+`JBPaymentInput` accepts shared `jb-input/react` props such as `value`, `label`, `message`, `placeholder`, `disabled`, `required`, `validationList`, `onInput`, `onChange`, `onFocus`, `onBlur`, and keyboard events.
 
-```javascript
-    const elementRef = React.createRef();
-    const isValid = elementRef.current.validation.checkValidity(true).isAllValid;
-```
+| prop | type | description |
+| --- | --- | --- |
+| `inputType` | `'CARD' \| 'SHABA' \| null` | Payment value mode. Defaults to `CARD`. |
+| `separator` | `string \| null` | Display separator. Defaults to a space; `""` removes grouping separators. |
 
-if `isValid` is `true` the value of input is valid.
-
-### separator (divider) string
-payment input by default use space to separate part of card number or shaba number. for example it will show `1234123412341234` as `1234 1234 1234 1234` but you can change it to what char or even string you want for eample devide it by `-` and you will see `1234-1234-1234-1234`.    
-to make this happen you just have to set `separator` prop in jsx.
+## Controlled value
 
 ```jsx
-<JBPaymentInput separator="-"></JBPaymentInput>
+const [value, setValue] = useState('');
+
+<JBPaymentInput
+  inputType="CARD"
+  value={value}
+  onChange={(event) => setValue(event.target.value)}
+/>;
 ```
 
-## other props
-<!-- TODO: update it -->
-this component support all attributes comes from [`jb-input/react`](https://github.com/javadbat/jb-input/tree/main/react)
+`event.target.value` is the canonical English-digit value without separators.
 
+## Separator
 
-## set custom style
+```jsx
+<JBPaymentInput inputType="CARD" separator="-" />;
+<JBPaymentInput inputType="CARD" separator="" />;
+```
 
-in some cases in your project you need to change default style of web-component for example you need zero margin or different border-radius and etc.    
-if you want to set a custom style to this web-component all you need is to set CSS variable in parent scope of web-component.
-since jb-payment-input use jb-input underneath, read [jb-input](https://github.com/javadbat/jb-input) custom style list.
+## Bank indicator
 
+```jsx
+import { JBPaymentInput } from 'jb-payment-input/react';
+import { BankIndicator } from 'jb-payment-input/bank-indicator/react';
+
+<JBPaymentInput inputType="CARD" label="Card number">
+  <BankIndicator slot="end-section" />
+</JBPaymentInput>;
+```
+
+## Validation
+
+Use `validationList` for custom payment rules.
+
+```jsx
+const validationList = [
+  {
+    validator: /^603799.*$/g,
+    message: 'Only Melli bank cards are accepted',
+  },
+  {
+    validator: ({ value }) => value !== '5041373111111111',
+    message: 'This card is banned',
+  },
+];
+
+<JBPaymentInput validationList={validationList} />;
+```
+
+## Check validation
+
+```jsx
+const elementRef = useRef();
+
+const isValid = elementRef.current.checkValidity();
+const isVisibleValid = elementRef.current.reportValidity();
+
+<JBPaymentInput ref={elementRef} />;
+```
+
+## Styling
+
+The React component uses the same CSS variables as the web component. For custom style options, see [`jb-payment-input`](https://github.com/javadbat/jb-payment-input), [`bank-indicator`](https://github.com/javadbat/jb-payment-input/tree/main/bank-indicator), and inherited [`jb-input`](https://github.com/javadbat/jb-input) styling docs.
 
 ## Shared Documentation
 
-For web-component behavior, events, slots, and CSS variables, see [`jb-payment-input`](https://github.com/javadbat/jb-payment-input).
+For web-component behavior, events, validation, slots, and CSS variables, see [`jb-payment-input`](https://github.com/javadbat/jb-payment-input).
 
 ## Related Docs
-- see [jb-payment-input](https://github.com/javadbat/jb-payment-input) if you want to use this component as a pure-js web-component
 
-- see [All JB Design system Component List](https://javadbat.github.io/design-system/) for more components
+- See [`jb-payment-input`](https://github.com/javadbat/jb-payment-input) if you want to use this component as a pure JavaScript web component.
+- See [All JB Design System Component List](https://javadbat.github.io/design-system/) for more components.
+- Use [Contribution Guide](https://github.com/javadbat/design-system/blob/main/docs/contribution-guide.md) if you want to contribute to this component.
 
-- use [Contribution Guide](https://github.com/javadbat/design-system/blob/main/docs/contribution-guide.md) if you want to contribute in this component.
+## AI agent notes
+
+- Import `JBPaymentInput` from `jb-payment-input/react`; the wrapper imports and registers the underlying `jb-payment-input` web component.
+- Use React prop `inputType`, not the web attribute `input-type`.
+- Use `event.target.value` for the canonical value; formatted grouping is display-only.
+- Import `BankIndicator` from `jb-payment-input/bank-indicator/react` when adding bank logos in React.

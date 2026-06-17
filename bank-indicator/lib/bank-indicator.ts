@@ -75,11 +75,11 @@ export class BankIndicatorWebComponent extends HTMLElement {
     static get observedAttributes() {
       return ['prefix'];
     }
-    attributeChangedCallback(name:string, oldValue:string, newValue:string) {
+    attributeChangedCallback(name:string, oldValue:string, newValue:string | null) {
       // do something when an attribute has changed
       this.onAttributeChange(name, newValue);
     }
-    onAttributeChange(name:string, value:string) {
+    onAttributeChange(name:string, value:string | null) {
       switch (name) {
         case 'prefix':
           //do something

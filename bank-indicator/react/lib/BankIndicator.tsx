@@ -27,6 +27,8 @@ const BankIndicator = React.forwardRef((props: Props, ref) => {
   useEffect(() => {
     if (prefix && typeof prefix === "string" && prefix !== "") {
       element.current?.setAttribute('prefix', prefix);
+    } else {
+      element.current?.removeAttribute('prefix');
     }
   }, [prefix]);
   return (

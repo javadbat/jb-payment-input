@@ -12,14 +12,17 @@ export * from './constants.js';
 //TODO: add barcode scanner or nfc reader
 //TODO: convert shaba to IBAN and create country code list regex 
 export class JBPaymentInputWebComponent extends JBInputWebComponent {
-  #paymentInputType: PaymentInputType = this.getAttribute("input-type") as PaymentInputType || "CARD";
+  #paymentInputType!: PaymentInputType;
   get paymentInputType() {
     return this.#paymentInputType;
   }
-  set paymentInputType(value: PaymentInputType) {
-    if(PaymentInputTypeList.includes(value)){
-      this.#paymentInputType = value || "CARD";
+  set paymentInputType(value: PaymentInputType | string | null | undefined) {
+    const newValue = this.#getPaymentInputType(value);
+    if (newValue === this.#paymentInputType) {
+      return;
     }
+    this.#paymentInputType = newValue;
+    this.value = `${this.value}`;
   }
   #separatorString = " ";
   //calculated on separatorString set
@@ -29,20 +32,28 @@ export class JBPaymentInputWebComponent extends JBInputWebComponent {
   }
   set separatorString(value: string) {
     this.#separatorString = value;
-    this.#separatorRegex = RegExp(
-      this.#separatorString
-        //will replace every regex meaningful char with \\ prefix to disable its meaningful functions
-        .replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
-        .replace(/\s/g, "\\s"),
-      "g");
+    this.#separatorRegex = value === "" ? /(?!)/
+      : RegExp(
+        this.#separatorString
+          //will replace every regex meaningful char with \\ prefix to disable its meaningful functions
+          .replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
+          .replace(/\s/g, "\\s"),
+        "g");
     //fix prev value display on char update
     const sVal = this.standardValue(this.value,"SET_VALUE");
     this.elements.input.value = sVal.displayValue;
   }
   constructor() {
     super();
+    this.#paymentInputType = this.#getPaymentInputType(this.getAttribute("input-type"));
     //to prevent initWebComponent  method override
     this.#initPaymentInputWebComponent();
+  }
+  #getPaymentInputType(value: PaymentInputType | string | null | undefined): PaymentInputType {
+    if (PaymentInputTypeList.includes(value as PaymentInputType)) {
+      return value as PaymentInputType;
+    }
+    return "CARD";
   }
   #initPaymentInputWebComponent() {
     const html = `<style>${CSS}</style>`;
@@ -86,8 +97,8 @@ export class JBPaymentInputWebComponent extends JBInputWebComponent {
     }
     if (this.#paymentInputType == "SHABA") {
       const separator = /(?<ir>(IR|ir|Ir|I|i)?)(?<other>.{0,})/g.exec(rawText);
-      if (separator && separator.groups) {
-        //convert perian number to en number and replace space
+      if (separator?.groups) {
+        //convert persian number to en number and replace space
         let numberPart = faToEnDigits(this.#removeSeparatorString(separator.groups.other)).replace(/[^0-9]/g, "");
         numberPart = numberPart.substring(0, 24);
         //manage ir part

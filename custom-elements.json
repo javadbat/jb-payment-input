@@ -1,0 +1,415 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "README.md",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "lib/jb-payment-input.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Payment-focused extension of jb-input for Iranian card numbers (شماره کارت) and SHABA (شبا) values with canonical value normalization, grouped display values, and built-in validation.",
+          "name": "JBPaymentInputWebComponent",
+          "tagName": "jb-payment-input",
+          "customElement": true,
+          "superclass": {
+            "name": "JBInputWebComponent",
+            "module": "jb-input"
+          },
+          "attributes": [
+            {
+              "name": "input-type",
+              "description": "Payment value mode. Accepted values are CARD and SHABA. Invalid values fall back to CARD.",
+              "type": {
+                "text": "'CARD' | 'SHABA'"
+              },
+              "default": "CARD"
+            },
+            {
+              "name": "separator",
+              "description": "Separator used in displayValue, such as space, dash, underscore, or an empty string.",
+              "type": {
+                "text": "string"
+              },
+              "default": " "
+            },
+            {
+              "name": "value",
+              "description": "Inherited from jb-input. Canonical English-digit payment value without separators.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "label",
+              "description": "Inherited from jb-input. Visible label text and accessible aria label.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "message",
+              "description": "Inherited from jb-input. Helper text shown under the input when no validation error is visible.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "name",
+              "description": "Inherited from jb-input. Form field name forwarded to the inner input.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "placeholder",
+              "description": "Inherited from jb-input. Placeholder forwarded to the inner input.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "autocomplete",
+              "description": "Inherited from jb-input. Native autocomplete value forwarded to the inner input.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "inputmode",
+              "description": "Inherited from jb-input. Native inputmode value forwarded to the inner input.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "readonly",
+              "description": "Inherited from jb-input. Native readonly attribute forwarded to the inner input.",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "disabled",
+              "description": "Inherited from jb-input. Disables the input.",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "required",
+              "description": "Inherited from jb-input. Enables required validation. A string value is used as the required validation message.",
+              "type": {
+                "text": "boolean | string"
+              }
+            },
+            {
+              "name": "error",
+              "description": "Inherited from jb-input. External validation error message.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "disable-auto-validation",
+              "description": "Inherited from jb-input. Disables automatic validation on input and blur.",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "size",
+              "description": "Inherited from jb-input. Visual size variant.",
+              "type": {
+                "text": "'xs' | 'sm' | 'md' | 'lg' | 'xl'"
+              }
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "paymentInputType",
+              "description": "Payment value mode. Accepted values are CARD and SHABA. Invalid values fall back to CARD.",
+              "type": {
+                "text": "PaymentInputType"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "separatorString",
+              "description": "Separator used in displayValue. Empty string removes grouping separators.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "description": "Inherited from jb-input. Canonical English-digit payment value without separators.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "displayValue",
+              "description": "Inherited from jb-input. Rendered grouped value using separatorString.",
+              "type": {
+                "text": "string"
+              },
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "validation",
+              "description": "Inherited from jb-input. Validation helper from jb-validation.",
+              "type": {
+                "text": "ValidationHelper<JBInputValue>"
+              },
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "description": "Inherited from jb-input. Enables or disables the component.",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "required",
+              "description": "Inherited from jb-input. Enables required validation.",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "isDirty",
+              "description": "Inherited from jb-input. True when current value differs from initialValue.",
+              "type": {
+                "text": "boolean"
+              },
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "validationMessage",
+              "description": "Inherited from jb-input. Current validation message.",
+              "type": {
+                "text": "string"
+              },
+              "readonly": true
+            }
+          ],
+          "methods": [
+            {
+              "name": "checkValidity",
+              "description": "Inherited from jb-input. Runs validation without showing the error message.",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
+              "name": "reportValidity",
+              "description": "Inherited from jb-input. Runs validation and shows the first error message.",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
+              "name": "focus",
+              "description": "Inherited from jb-input. Focuses the inner native input."
+            },
+            {
+              "name": "setSelectionRange",
+              "description": "Inherited from jb-input. Forwards setSelectionRange to the inner input."
+            },
+            {
+              "name": "addStandardValueCallback",
+              "description": "Inherited from jb-input. Registers a callback that can transform displayValue and submitted value."
+            }
+          ],
+          "events": [
+            {
+              "name": "input",
+              "description": "Inherited from jb-input and dispatched on user edits after payment value standardization."
+            },
+            {
+              "name": "change",
+              "description": "Inherited from jb-input and dispatched when the payment value changes and is committed."
+            },
+            {
+              "name": "invalid",
+              "description": "Inherited from jb-input and dispatched when validation fails."
+            },
+            {
+              "name": "beforeinput",
+              "description": "Inherited from jb-input. Cancelable event dispatched before the native input changes."
+            },
+            {
+              "name": "keydown",
+              "description": "Inherited from jb-input. Keyboard event re-dispatched from the host."
+            },
+            {
+              "name": "keyup",
+              "description": "Inherited from jb-input. Keyboard event re-dispatched from the host."
+            },
+            {
+              "name": "enter",
+              "description": "Inherited from jb-input. Dispatched on keyup when Enter is pressed."
+            }
+          ],
+          "slots": [
+            {
+              "name": "start-section",
+              "description": "Inherited from jb-input. Content rendered before the native input. Commonly used for bank-indicator."
+            },
+            {
+              "name": "end-section",
+              "description": "Inherited from jb-input. Content rendered after the native input. Commonly used for bank-indicator."
+            }
+          ],
+          "cssParts": [
+            {
+              "name": "label",
+              "description": "Inherited from jb-input. The label element."
+            },
+            {
+              "name": "input-box",
+              "description": "Inherited from jb-input. The wrapper around slots and inner input."
+            },
+            {
+              "name": "input",
+              "description": "Inherited from jb-input. The inner native input."
+            },
+            {
+              "name": "message",
+              "description": "Inherited from jb-input. The helper or validation message element."
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--jb-input-input-direction",
+              "description": "Inherited from jb-input. jb-payment-input sets it to ltr by default."
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "JBPaymentInputWebComponent",
+          "declaration": {
+            "name": "JBPaymentInputWebComponent",
+            "module": "lib/jb-payment-input.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "jb-payment-input",
+          "declaration": {
+            "name": "JBPaymentInputWebComponent",
+            "module": "lib/jb-payment-input.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "bank-indicator/lib/bank-indicator.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Iranian bank indicator web component that displays a bank logo from a card prefix or from the closest parent jb-payment-input value.",
+          "name": "BankIndicatorWebComponent",
+          "tagName": "bank-indicator",
+          "customElement": true,
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "attributes": [
+            {
+              "name": "prefix",
+              "description": "Six-digit card prefix used for bank detection.",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "selectedBank",
+              "description": "Currently detected bank. Null shows the default card icon.",
+              "type": {
+                "text": "BankItem | null"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "bankInfo",
+              "description": "Supported bank metadata and prefixes.",
+              "type": {
+                "text": "BankInfo"
+              }
+            }
+          ],
+          "methods": [
+            {
+              "name": "changeBank",
+              "description": "Updates selectedBank from a card prefix.",
+              "parameters": [
+                {
+                  "name": "prefix",
+                  "type": {
+                    "text": "string | null"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "load",
+              "description": "Dispatched from connectedCallback before init."
+            },
+            {
+              "name": "init",
+              "description": "Dispatched from connectedCallback after init."
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--bank-indicator-padding",
+              "description": "Bank logo padding."
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "BankIndicatorWebComponent",
+          "declaration": {
+            "name": "BankIndicatorWebComponent",
+            "module": "bank-indicator/lib/bank-indicator.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "bank-indicator",
+          "declaration": {
+            "name": "BankIndicatorWebComponent",
+            "module": "bank-indicator/lib/bank-indicator.ts"
+          }
+        }
+      ]
+    }
+  ]
+}
