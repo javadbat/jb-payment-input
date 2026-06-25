@@ -6,7 +6,6 @@
     },
     "include": [
         "lib/**/*.ts",
-        "../../global.d.ts",
     ],
     "exclude": [
         "node_modules",
