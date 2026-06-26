@@ -1,15 +1,15 @@
 import React from 'react';
-import { JBPaymentInput, Props } from 'jb-payment-input/react';
+import { JBPaymentInput } from 'jb-payment-input/react';
 import 'jb-payment-input/bank-indicator';
 import { BankIndicator } from 'jb-payment-input/bank-indicator/react';
 import type { Meta, StoryObj } from '@storybook/react';
 
-const meta: Meta<Props> = {
+const meta = {
   title: "Components/form elements/Inputs/JBPaymentInput",
   component: JBPaymentInput,
-};
+} satisfies Meta<typeof JBPaymentInput>;
 export default meta;
-type Story = StoryObj<typeof JBPaymentInput>;
+type Story = StoryObj<typeof meta>;
 
 export const CardNumber: Story = {
   args: {
