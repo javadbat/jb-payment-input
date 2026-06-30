@@ -4,22 +4,8 @@ import {type BaseProps, useJBInputAttribute,useJBInputEvents} from 'jb-input/rea
 import 'jb-payment-input';
 // eslint-disable-next-line no-duplicate-imports
 import type {JBPaymentInputWebComponent, PaymentInputType} from 'jb-payment-input';
+import './module-declaration.js';
 
-declare module "react" {
-  // eslint-disable-next-line @typescript-eslint/no-namespace
-  namespace JSX {
-    interface IntrinsicElements {
-      'jb-payment-input': JBPaymentInputType;
-    }
-     interface JBPaymentInputType extends React.DetailedHTMLProps<React.HTMLAttributes<JBPaymentInputWebComponent>, JBPaymentInputWebComponent> {
-      "class"?: string,
-      "type"?: string,
-      "label"?:string,
-      "message"?:string,
-      "placeholder"?:string,
-    }
-  }
-}
 // eslint-disable-next-line react/display-name
 const JBPaymentInput = React.forwardRef((props:Props, ref) => {
   const element = useRef<JBPaymentInputWebComponent>(null as unknown as JBPaymentInputWebComponent);
