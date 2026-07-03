@@ -26,6 +26,12 @@ import { JBPaymentInput } from 'jb-payment-input/react';
 <JBPaymentInput label="SHABA number (شبا)" inputType="SHABA" />;
 ```
 
+## When to use
+
+Use `JBPaymentInput` for Iranian payment fields that collect bank card numbers or SHABA numbers.
+
+Use `JBNumberInput` for general numeric amounts and `JBInput` when the value is not a card or SHABA value.
+
 ## Props
 
 `JBPaymentInput` accepts shared `jb-input/react` props such as `value`, `label`, `message`, `placeholder`, `disabled`, `required`, `validationList`, `onInput`, `onChange`, `onFocus`, `onBlur`, and keyboard events.
@@ -48,6 +54,14 @@ const [value, setValue] = useState('');
 ```
 
 `event.target.value` is the canonical English-digit value without separators.
+
+## Value and display value
+
+The visible value may include grouping separators and Persian/Arabic input may be normalized. Always read `event.target.value` for the canonical English-digit card or SHABA value.
+
+## Input type
+
+Set `inputType="CARD"` for card numbers and `inputType="SHABA"` for SHABA numbers. The selected type controls formatting and validation behavior.
 
 ## Separator
 
@@ -100,6 +114,14 @@ const isVisibleValid = elementRef.current.reportValidity();
 ## Styling
 
 The React component uses the same CSS variables as the web component. For custom style options, see [`jb-payment-input`](https://github.com/javadbat/jb-payment-input), [`bank-indicator`](https://github.com/javadbat/jb-payment-input/tree/main/bank-indicator), and inherited [`jb-input`](https://github.com/javadbat/jb-input) styling docs.
+
+## CSS variables
+
+Use the same CSS variables as the web component, plus inherited `jb-input` variables for the shared input shell.
+
+## Accessibility notes
+
+Set a clear `label` that identifies whether the field expects a card number or SHABA number. Treat bank indicators as supplemental visual information and keep the text label explicit.
 
 ## Shared Documentation
 
