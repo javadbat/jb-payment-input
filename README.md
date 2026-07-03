@@ -213,11 +213,11 @@ paymentInput.addEventListener('enter', (event) => {
 
 | CSS variable name | description |
 | --- | --- |
-| `--bank-indicator-padding` | Bank logo padding. Default is `8px 16px`. |
+| `--bank-indicator-padding` | Bank logo padding. Default is `0.5rem 1rem`. |
 
 ```css
 bank-indicator {
-  --bank-indicator-padding: 6px 12px;
+  --bank-indicator-padding: 0.375rem 0.75rem;
 }
 ```
 

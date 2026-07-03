@@ -49,7 +49,7 @@ Use it standalone by setting `prefix`.
 
 | CSS variable name | description |
 | --- | --- |
-| `--bank-indicator-padding` | Bank logo padding. Default is `8px 16px`. |
+| `--bank-indicator-padding` | Bank logo padding. Default is `0.5rem 1rem`. |
 
 ## Related Docs
 
