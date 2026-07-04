@@ -1,1 +1,1 @@
-export * from './dist/jb-payment-input.js';
+export * from './web-component/dist/jb-payment-input.js';

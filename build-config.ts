@@ -3,8 +3,9 @@ import type { ReactComponentBuildConfig, WebComponentBuildConfig } from "../../t
 export const webComponentList: WebComponentBuildConfig[] = [
   {
     name: "jb-payment-input",
-    path: "./lib/jb-payment-input.ts",
-    outputPath: "./dist/jb-payment-input.js",
+    path: "./web-component/lib/jb-payment-input.ts",
+    outputPath: "./web-component/dist/jb-payment-input.js",
+    tsConfigPath: "./web-component/tsconfig.json",
     umdName: "JBPaymentInput",
     external: ["jb-input", "jb-validation", "jb-core", "jb-core/i18n", "jb-core/theme"],
     globals: {
