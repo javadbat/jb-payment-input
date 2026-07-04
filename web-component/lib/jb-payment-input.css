@@ -1,4 +1,3 @@
 .jb-input-web-component{
-    --jb-input-input-direction: ltr;
-
+    --jb-input-input-direction: var(--input-direction);
 }

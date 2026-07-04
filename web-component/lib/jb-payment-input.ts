@@ -1,4 +1,5 @@
 import CSS from "./jb-payment-input.css";
+import VariablesCSS from "./variables.css";
 import "jb-input";
 import { type PaymentInputType } from './types';
 // eslint-disable-next-line no-duplicate-imports
@@ -56,7 +57,7 @@ export class JBPaymentInputWebComponent extends JBInputWebComponent {
     return "CARD";
   }
   #initPaymentInputWebComponent() {
-    const html = `<style>${CSS}</style>`;
+    const html = `<style>${VariablesCSS}</style><style>${CSS}</style>`;
     const element = document.createElement("template");
     element.innerHTML = html;
     this.shadowRoot?.appendChild(element.content.cloneNode(true));

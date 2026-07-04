@@ -1,0 +1,4 @@
+:host {
+  /* Other */
+  --input-direction: var(--jb-payment-input-input-direction, ltr);
+}
