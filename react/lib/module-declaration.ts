@@ -12,6 +12,8 @@ declare module "react" {
       "label"?:string,
       "message"?:string,
       "placeholder"?:string,
+      "value"?: string,
+      "initialValue"?: string,
     }
   }
 }

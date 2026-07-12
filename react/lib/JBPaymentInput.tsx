@@ -16,8 +16,8 @@ const JBPaymentInput = React.forwardRef((props:Props, ref) => {
     [element],
   );
 
-  const {disabled,required,validationList,value,separator,inputType, children,onBeforeinput,onBlur,onChange,onEnter,onFocus,onInput,onKeydown,onKeyup, ...otherProps} = props;
-  useJBInputAttribute(element,{disabled,required,validationList,value,...otherProps});
+  const {disabled,initialValue,required,validationList,value,separator,inputType, children,onBeforeinput,onBlur,onChange,onEnter,onFocus,onInput,onKeydown,onKeyup, ...otherProps} = props;
+  useJBInputAttribute(element,{disabled,required,validationList,...otherProps});
   useJBInputEvents<JBPaymentInputWebComponent>(element,{onBeforeinput,onBlur,onChange,onEnter,onFocus,onInput,onKeydown,onKeyup,...otherProps});
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const JBPaymentInput = React.forwardRef((props:Props, ref) => {
   }, [separator]);
 
   return (
-    <jb-payment-input  ref={element} {...otherProps}>
+    <jb-payment-input  ref={element} value={value?.toString() ?? ""} initialValue={initialValue?.toString() ?? ""} {...otherProps}>
       {children}
     </jb-payment-input>
   );
@@ -42,6 +42,7 @@ const JBPaymentInput = React.forwardRef((props:Props, ref) => {
 export type Props = BaseProps<JBPaymentInputWebComponent> & {
   inputType?: PaymentInputType | null,
   separator?: string | null,
+  initialValue?: string | number | null,
 };
 JBPaymentInput.displayName = "JBPaymentInput";
 export {JBPaymentInput};
