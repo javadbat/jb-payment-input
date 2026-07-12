@@ -33,12 +33,12 @@ export const reactComponentList: ReactComponentBuildConfig[] = [
     name: "jb-payment-input-react",
     path: "./react/lib/JBPaymentInput.tsx",
     outputPath: "./react/dist/JBPaymentInput.js",
-    external: ["jb-input","jb-payment-input", "jb-input-react", "prop-types", "react", "jb-core"],
+    external: ["jb-input", "jb-input/react", "jb-payment-input", "prop-types", "react", "jb-core"],
     globals: {
       react: "React",
       "jb-input":"JBInput",
       "prop-types": "PropTypes",
-      "jb-input-react": "JBInputReact",
+      "jb-input/react": "JBInputReact",
       "jb-payment-input": "JBPaymentInput",
       
     },

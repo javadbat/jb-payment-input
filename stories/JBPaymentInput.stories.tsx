@@ -2,7 +2,7 @@ import React from 'react';
 import { JBPaymentInput } from 'jb-payment-input/react';
 import 'jb-payment-input/bank-indicator';
 import { BankIndicator } from 'jb-payment-input/bank-indicator/react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, userEvent, waitFor } from 'storybook/test';
 import {
   getBankImageWrapper,
