@@ -3,8 +3,11 @@ import { BankIndicatorElements, BankItem } from './types';
 import {allBankInfo} from './BankInfo';
 import creditCardIcon from './credit-card.svg';
 import { renderHTML } from './render';
+import { i18n } from 'jb-core/i18n';
+import { dictionary } from './i18n';
 export * from './types.js';
 export class BankIndicatorWebComponent extends HTMLElement {
+    #internals?: ElementInternals;
     elements!:BankIndicatorElements;
     bankInfo = allBankInfo;
     #selectedBank:BankItem | null = null;
@@ -15,13 +18,20 @@ export class BankIndicatorWebComponent extends HTMLElement {
       this.#selectedBank = value;
       if(value){
         this.elements.bankImageWrapper.innerHTML= value.logo;
-        this.elements.bankImageWrapper.setAttribute("title", value.title.fa);
+        const title = i18n.locale.language === "fa" ? value.title.fa : value.title.en;
+        this.elements.bankImageWrapper.setAttribute("title", title);
+        if (this.#internals) this.#internals.ariaLabel = title;
       }else{
         this.elements.bankImageWrapper.innerHTML = creditCardIcon;
+        if (this.#internals) this.#internals.ariaLabel = dictionary.get(i18n, "paymentCard");
       }
     }
     constructor() {
       super();
+      if (typeof this.attachInternals === "function") {
+        this.#internals = this.attachInternals();
+        this.#internals.role = "img";
+      }
       this.initWebComponent();
     }
     connectedCallback() {
