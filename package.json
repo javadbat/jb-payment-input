@@ -38,6 +38,25 @@
   ],
   "main": "index.js",
   "types": "./web-component/dist/jb-payment-input.d.ts",
+  "exports": {
+    ".": {
+      "types": "./web-component/dist/jb-payment-input.d.ts",
+      "default": "./index.js"
+    },
+    "./react": {
+      "types": "./react/dist/JBPaymentInput.d.ts",
+      "default": "./react/index.js"
+    },
+    "./bank-indicator": {
+      "types": "./bank-indicator/dist/bank-indicator.d.ts",
+      "default": "./bank-indicator/index.js"
+    },
+    "./bank-indicator/react": {
+      "types": "./bank-indicator/react/dist/BankIndicator.d.ts",
+      "default": "./bank-indicator/react/index.js"
+    },
+    "./*": "./*"
+  },
   "customElements": "web-component/custom-elements.json",
   "repository": {
 		"type": "git",
