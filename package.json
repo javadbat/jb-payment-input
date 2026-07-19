@@ -20,7 +20,7 @@
     "web component",
     "react"
   ],
-  "version": "3.4.1",
+  "version": "3.5.0",
   "bugs": "https://github.com/javadbat/jb-payment-input/issues",
   "license": "MIT",
   "files": [
@@ -63,11 +63,11 @@
 		"url": "git@github.com:javadbat/jb-payment-input.git"
   },
   "dependencies": {
-    "jb-input": ">=3.11.3",
-    "jb-core":">=0.18.1",
-    "jb-validation":">=0.4.0"
+    "jb-input": ">=3.17.0",
+    "jb-core":">=0.30.0",
+    "jb-validation":">=1.0.0"
   },
   "devDependencies": {
-    "jb-form":">=0.7.1"
+    "jb-form":">=0.12.0"
   }
 }
