@@ -35,7 +35,7 @@
   },
   "types": "./dist/JBPaymentInput.d.ts",
   "dependencies": {
-    "jb-payment-input": ">=3.1.1",
-    "jb-input-react": ">=3.6.0"
+    "jb-payment-input": "^3.1.1",
+    "jb-input-react": "^3.6.0"
   }
 }
