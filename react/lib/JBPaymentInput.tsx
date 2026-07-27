@@ -32,8 +32,23 @@ const JBPaymentInput = React.forwardRef((props:Props, ref) => {
     }
   }, [separator]);
 
+  useEffect(() => {
+    if (element.current && initialValue !== undefined) {
+      // Payment mode and separator must be configured first; otherwise a SHABA
+      // baseline would be normalized and truncated by the default CARD mode.
+      element.current.initialValue = initialValue?.toString() ?? "";
+    }
+  }, [initialValue]);
+
+  useEffect(() => {
+    if (element.current && value !== undefined) {
+      // Apply an explicit live value after initialValue so it keeps precedence.
+      element.current.value = value?.toString() ?? "";
+    }
+  }, [value]);
+
   return (
-    <jb-payment-input  ref={element} value={value?.toString() ?? ""} initialValue={initialValue?.toString() ?? ""} {...otherProps}>
+    <jb-payment-input ref={element} {...otherProps}>
       {children}
     </jb-payment-input>
   );

@@ -23,7 +23,9 @@ export class JBPaymentInputWebComponent extends JBInputWebComponent {
       return;
     }
     this.#paymentInputType = newValue;
-    this.value = `${this.value}`;
+    // Switching the formatter must not consume the initial-value latch; no
+    // consumer live value is assigned by this configuration change.
+    this.setValueFromInternal(`${this.value}`);
   }
   #separatorString = " ";
   //calculated on separatorString set

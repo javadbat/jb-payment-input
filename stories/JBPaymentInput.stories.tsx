@@ -1,4 +1,5 @@
-import React from 'react';
+import { useRef } from 'react';
+import { JBButton } from 'jb-button/react';
 import { JBPaymentInput } from 'jb-payment-input/react';
 import 'jb-payment-input/bank-indicator';
 import { BankIndicator } from 'jb-payment-input/bank-indicator/react';
@@ -52,6 +53,140 @@ export const CardNumber: Story = {
     });
   }
 };
+
+const initialShaba = 'IR120000000000000000000000';
+const nextInitialShaba = 'IR340000000000000000000000';
+
+export const InitialValue: Story = {
+  render: (args) => {
+    const formRef = useRef<HTMLFormElement>(null);
+    return (
+      <form ref={formRef}>
+        <JBPaymentInput {...args} />
+        <JBButton type="button" onClick={() => formRef.current?.reset()}>Reset</JBButton>
+      </form>
+    );
+  },
+  args: {
+    label: 'initial SHABA',
+    inputType: 'SHABA',
+    initialValue: initialShaba,
+  },
+  play: async ({ canvasElement }) => {
+    const paymentInput = getPaymentInput(canvasElement);
+    const resetButton = canvasElement.querySelector('jb-button')?.shadowRoot?.querySelector<HTMLButtonElement>('button');
+
+    expect(resetButton).toBeTruthy();
+
+    await waitFor(() => {
+      // The wrapper must configure SHABA mode before assigning the baseline,
+      // otherwise CARD normalization truncates the 24-digit account number.
+      expect(paymentInput.initialValue).toBe(initialShaba);
+      expect(paymentInput.value).toBe(initialShaba);
+      expect(paymentInput.displayValue).toBe('IR12 0000 0000 0000 0000 0000 00');
+      expect(paymentInput.isDirty).toBe(false);
+    });
+
+    paymentInput.initialValue = nextInitialShaba;
+
+    await waitFor(() => {
+      expect(paymentInput.initialValue).toBe(nextInitialShaba);
+      expect(paymentInput.value).toBe(nextInitialShaba);
+      expect(paymentInput.isDirty).toBe(false);
+    });
+
+    paymentInput.value = 'IR560000000000000000000000';
+    await userEvent.click(resetButton!);
+
+    await waitFor(() => {
+      expect(paymentInput.value).toBe(nextInitialShaba);
+      expect(paymentInput.isDirty).toBe(false);
+    });
+  },
+};
+
+export const InitialValueDoesNotOverrideValue: Story = {
+  args: {
+    inputType: 'SHABA',
+    initialValue: initialShaba,
+    value: nextInitialShaba,
+  },
+  play: async ({ canvasElement }) => {
+    const paymentInput = getPaymentInput(canvasElement);
+
+    await waitFor(() => {
+      expect(paymentInput.initialValue).toBe(initialShaba);
+      expect(paymentInput.value).toBe(nextInitialShaba);
+      expect(paymentInput.isDirty).toBe(true);
+    });
+  },
+};
+
+export const ExplicitNullValueDoesNotFallBackToInitialValue: Story = {
+  args: {
+    inputType: 'SHABA',
+    initialValue: initialShaba,
+    value: null,
+  },
+  play: async ({ canvasElement }) => {
+    const paymentInput = getPaymentInput(canvasElement);
+
+    await waitFor(() => {
+      expect(paymentInput.initialValue).toBe(initialShaba);
+      expect(paymentInput.value).toBe('');
+      expect(paymentInput.isDirty).toBe(true);
+    });
+  },
+};
+
+export const ChangingPaymentTypeKeepsInitialBaseline: Story = {
+  render: (args) => {
+    const formRef = useRef<HTMLFormElement>(null);
+    return (
+      <form ref={formRef}>
+        <JBPaymentInput {...args} />
+        <JBButton type="button" onClick={() => formRef.current?.reset()}>Reset</JBButton>
+      </form>
+    );
+  },
+  args: {
+    inputType: 'CARD',
+    initialValue: '6037991234567890',
+  },
+  play: async ({ canvasElement }) => {
+    const paymentInput = getPaymentInput(canvasElement);
+    const resetButton = canvasElement.querySelector('jb-button')?.shadowRoot?.querySelector<HTMLButtonElement>('button');
+
+    expect(resetButton).toBeTruthy();
+
+    await waitFor(() => {
+      expect(paymentInput.value).toBe('6037991234567890');
+      expect(paymentInput.isDirty).toBe(false);
+    });
+
+    paymentInput.paymentInputType = 'SHABA';
+
+    await waitFor(() => {
+      // CARD -> SHABA changes the canonical value domain, so the reset
+      // baseline must be transformed together with the live value.
+      expect(paymentInput.initialValue).toBe('IR6037991234567890');
+      expect(paymentInput.value).toBe('IR6037991234567890');
+      expect(paymentInput.isDirty).toBe(false);
+    });
+
+    paymentInput.value = initialShaba;
+    expect(paymentInput.isDirty).toBe(true);
+
+    await userEvent.click(resetButton!);
+
+    await waitFor(() => {
+      expect(paymentInput.value).toBe('IR6037991234567890');
+      expect(paymentInput.initialValue).toBe(paymentInput.value);
+      expect(paymentInput.isDirty).toBe(false);
+    });
+  },
+};
+
 export const CardNumberPaste: Story = {
   args: {
     label: 'card number paste',
