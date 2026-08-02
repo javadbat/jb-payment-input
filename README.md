@@ -17,18 +17,19 @@
 
 ## When to use
 
-Use `jb-payment-input` for Iranian payment fields that collect bank card numbers (شماره کارت) or SHABA (شبا) numbers.
+Use `jb-payment-input` for Iranian payment fields that collect bank card numbers (شماره کارت) or SHABA (شبا) numbers. [See the interactive examples](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput--overview).
 
 Use [`jb-number-input`](https://github.com/javadbat/jb-number-input) for general numeric amounts. Use [`jb-input`](https://github.com/javadbat/jb-input) when the value is not a card or SHABA value.
 
 ## Demo
 
-- [CodePen](https://codepen.io/javadbat/pen/rNvWdve)
-- [Storybook](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput)
+[Try the interactive examples](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput--overview) or [open the CodePen](https://codepen.io/javadbat/pen/rNvWdve).
 
 ## Using With JS Frameworks
 
 <a href="https://github.com/javadbat/jb-payment-input/tree/main/react" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/React.js-jb--payment--input%2Freact-000.svg?logo=react&logoColor=%2361DAFB" height="30" /></a>
+
+See the [React API and examples](https://javadbat.github.io/design-system/?path=/docs/components-form-elements-inputs-jbpaymentinput-react-readme--docs).
 
 Other integrations: <a href="https://javadbat.github.io/design-system/?path=/docs/getting-started-framework-integration--docs#angular" target="_blank" rel="noopener noreferrer">Angular</a> · <a href="https://javadbat.github.io/design-system/?path=/docs/getting-started-framework-integration--docs#vue" target="_blank" rel="noopener noreferrer">Vue</a> · <a href="https://javadbat.github.io/design-system/?path=/docs/getting-started-framework-integration--docs#nuxt" target="_blank" rel="noopener noreferrer">Nuxt</a> · <a href="https://javadbat.github.io/design-system/?path=/docs/getting-started-framework-integration--docs#svelte" target="_blank" rel="noopener noreferrer">Svelte</a> · <a href="https://javadbat.github.io/design-system/?path=/docs/getting-started-framework-integration--docs#sveltekit" target="_blank" rel="noopener noreferrer">SvelteKit</a> · <a href="https://javadbat.github.io/design-system/?path=/docs/getting-started-framework-integration--docs#solidjs" target="_blank" rel="noopener noreferrer">SolidJS</a> · <a href="https://javadbat.github.io/design-system/?path=/docs/getting-started-framework-integration--docs#lit" target="_blank" rel="noopener noreferrer">Lit</a> · <a href="https://javadbat.github.io/design-system/?path=/docs/getting-started-framework-integration--docs#nextjs" target="_blank" rel="noopener noreferrer">Next.js</a> · <a href="https://javadbat.github.io/design-system/?path=/docs/getting-started-framework-integration--docs#astro" target="_blank" rel="noopener noreferrer">Astro</a> · <a href="https://javadbat.github.io/design-system/?path=/docs/getting-started-framework-integration--docs#blazor" target="_blank" rel="noopener noreferrer">Blazor</a> · <a href="https://javadbat.github.io/design-system/?path=/docs/getting-started-framework-integration--docs#server-rendered-templates" target="_blank" rel="noopener noreferrer">Server-rendered templates</a> · <a href="https://javadbat.github.io/design-system/?path=/docs/getting-started-framework-integration--docs#wordpress" target="_blank" rel="noopener noreferrer">WordPress</a> · <a href="https://javadbat.github.io/design-system/?path=/docs/getting-started-framework-integration--docs#alpinejs-and-htmx" target="_blank" rel="noopener noreferrer">Alpine.js and HTMX</a>
 
@@ -56,25 +57,27 @@ import 'jb-payment-input';
 
 ## API reference
 
-`jb-payment-input` extends [`jb-input`](https://github.com/javadbat/jb-input). For shared attributes, properties, events, methods, validation, form association, slots, and CSS parts, see the [`jb-input` API](https://github.com/javadbat/jb-input#api-reference).
+`jb-payment-input` extends [`jb-input`](https://github.com/javadbat/jb-input). For shared attributes, properties, events, methods, validation, form association, slots, and CSS parts, see the shared [`jb-input` API](https://github.com/javadbat/jb-input#api-reference).
 
 ### Payment attributes
 
 | name | type | default | description |
 | --- | --- | --- | --- |
-| `input-type` | `'CARD' \| 'SHABA'` | `CARD` | Payment value mode. Invalid values fall back to `CARD`. |
-| `separator` | `string` | space | Separator used in `displayValue`, such as space, `-`, or `_`. |
+| `input-type` | `'CARD' \| 'SHABA'` | `CARD` | Payment value mode. Invalid values fall back to `CARD`. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput--shaba-number) |
+| `separator` | `string` | space | Separator used in `displayValue`, such as space, `-`, or `_`. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput--dash-separator-cn) |
 
 ### Payment properties
 
 | name | type | default | description |
 | --- | --- | --- | --- |
-| `paymentInputType` | `'CARD' \| 'SHABA'` | `CARD` | Payment value mode. Invalid values fall back to `CARD`. |
-| `separatorString` | `string` | space | Separator used in `displayValue`. Empty string shows the value without grouping separators. |
-| `value` | `string` | `""` | Canonical value inherited from `jb-input`; English digits and no separator. |
-| `displayValue` | `string` | `""` | Rendered value inherited from `jb-input`; grouped with `separatorString`. |
+| `paymentInputType` | `'CARD' \| 'SHABA'` | `CARD` | Payment value mode. Invalid values fall back to `CARD`. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput--changing-payment-type-keeps-initial-baseline) |
+| `separatorString` | `string` | space | Separator used in `displayValue`. Empty string shows the value without grouping separators. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput--dash-separator-cn) |
+| `value` | `string` | `""` | Canonical value inherited from `jb-input`; English digits and no separator. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput--card-number) |
+| `displayValue` | `string` | `""` | Rendered value inherited from `jb-input`; grouped with `separatorString`. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput--card-number) |
 
 ## Value and display value
+
+The [card demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput--card-number) and [SHABA demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput--shaba-number) show the canonical `.value` alongside the grouped `displayValue`.
 
 In `CARD` mode, the component keeps only card number (شماره کارت) digits and truncates to 16 digits.
 
@@ -100,6 +103,8 @@ console.log(paymentInput.displayValue); // "IR12 0000 0000 0000 0000 0000 00"
 
 ## Input type
 
+Switching between card and SHABA normalization is covered by the [payment-type baseline demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput--changing-payment-type-keeps-initial-baseline).
+
 ```html
 <jb-payment-input input-type="CARD"></jb-payment-input>
 <jb-payment-input input-type="SHABA"></jb-payment-input>
@@ -113,6 +118,8 @@ paymentInput.paymentInputType = 'SHABA';
 ```
 
 ## Separator
+
+The [dash separator demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput--dash-separator-cn) shows custom grouping without changing the canonical value.
 
 The default separator is a space.
 
@@ -129,6 +136,8 @@ paymentInput.separatorString = ''; // 6037991234567890
 ```
 
 ## Bank indicator
+
+The [bank-logo demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput--card-number-with-bank-logo) shows detection from the first six card digits.
 
 Use `bank-indicator` inside the payment input to show a detected Iranian bank logo from the first six card digits.
 
@@ -149,9 +158,11 @@ You can also use the bank indicator standalone by setting a six-digit `prefix`.
 <bank-indicator prefix="603799"></bank-indicator>
 ```
 
-For standalone bank indicator usage, see [bank-indicator README](https://javadbat.github.io/design-system/?path=/docs/components-form-elements-inputs-jbpaymentinput-bank-indicator-readme--docs).
+For standalone bank indicator usage, see the [bank-indicator documentation](https://javadbat.github.io/design-system/?path=/docs/components-form-elements-inputs-jbpaymentinput-bank-indicator-readme--docs).
 
 ## Validation
+
+The [card validation demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput--card-number), [SHABA validation demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput--shaba-number), and [required-field demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput--required-card-number) cover the built-in rules.
 
 Built-in validation depends on `paymentInputType`:
 
@@ -191,7 +202,7 @@ paymentInput.validation.list = [
 
 ## Events
 
-Payment input events are inherited from `jb-input`.
+Payment input events are inherited from `jb-input`; the [card interaction demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput--card-number-paste) demonstrates normalized user input and committed values.
 
 ```js
 paymentInput.addEventListener('input', (event) => {
@@ -209,7 +220,7 @@ paymentInput.addEventListener('enter', (event) => {
 
 ## CSS variables
 
-`jb-payment-input` uses `jb-input` internally. [`jb-input` CSS variables and parts](https://github.com/javadbat/jb-input#css-parts-and-states) also apply.
+`jb-payment-input` uses `jb-input` internally. [`jb-input` CSS variables and parts](https://github.com/javadbat/jb-input#css-parts-and-states) also apply. Browse the [payment-input style gallery](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput-style--gallery).
 
 `bank-indicator` supports:
 
@@ -225,7 +236,7 @@ bank-indicator {
 
 ## Accessibility notes
 
-- Shared label, message, validation, form association, focus, slots, and accessibility behavior come from `jb-input`.
+- Shared label, message, validation, form association, focus, slots, and accessibility behavior come from `jb-input`. [Shared input demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput--card-number)
 - The inner input direction is set to `ltr` for payment values.
 - Form submission uses the canonical `.value`, not `displayValue`.
 

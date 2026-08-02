@@ -4,7 +4,7 @@
 
 ## Usage
 
-Use it inside a `jb-payment-input` when the payment input is in `CARD` mode. The indicator finds the closest parent `jb-payment-input`, listens to its `input` event, and detects the bank from the first six digits.
+Use it inside a `jb-payment-input` when the payment input is in `CARD` mode. The indicator finds the closest parent `jb-payment-input`, listens to its `input` event, and detects the bank from the first six digits. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput--card-number-with-bank-logo)
 
 ```js
 import 'jb-payment-input';
@@ -17,7 +17,7 @@ import 'jb-payment-input/bank-indicator';
 </jb-payment-input>
 ```
 
-Use it standalone by setting `prefix`.
+Use it standalone by setting `prefix`. [Documentation demo](https://javadbat.github.io/design-system/?path=/docs/components-form-elements-inputs-jbpaymentinput-bank-indicator-readme--docs)
 
 ```html
 <bank-indicator prefix="603799"></bank-indicator>
@@ -29,13 +29,13 @@ Use it standalone by setting `prefix`.
 
 | name | type | description |
 | --- | --- | --- |
-| `prefix` | `string` | Six-digit card prefix used for bank detection. |
+| `prefix` | `string` | Six-digit card prefix used for bank detection. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput--card-number-with-bank-logo) |
 
 ### Properties
 
 | name | type | readonly | description |
 | --- | --- | --- | --- |
-| `selectedBank` | `BankItem \| null` | no | Currently detected bank. Set to `null` to show the default card icon. |
+| `selectedBank` | `BankItem \| null` | no | Currently detected bank. Set to `null` to show the default card icon. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput--card-number-with-bank-logo) |
 | `bankInfo` | `BankInfo` | no | List of supported banks and prefixes. |
 
 ### Events

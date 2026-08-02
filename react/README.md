@@ -9,9 +9,7 @@ React wrapper for [`jb-payment-input`](https://github.com/javadbat/jb-payment-in
 
 ## Demo
 
-- [CodeSandbox preview](https://3f63dj.csb.app/samples/jb-payment-input)
-- [CodeSandbox editor](https://codesandbox.io/p/sandbox/jb-design-system-3f63dj?file=%2Fsrc%2Fsamples%2FJBPaymentInput.tsx)
-- [Storybook](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput)
+Try the [component examples](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput--overview), or open the [CodeSandbox preview](https://3f63dj.csb.app/samples/jb-payment-input) and [editor](https://codesandbox.io/p/sandbox/jb-design-system-3f63dj?file=%2Fsrc%2Fsamples%2FJBPaymentInput.tsx).
 
 ## Installation
 
@@ -28,7 +26,7 @@ import { JBPaymentInput } from 'jb-payment-input/react';
 
 ## When to use
 
-Use `JBPaymentInput` for Iranian payment fields that collect bank card numbers or SHABA numbers.
+Use `JBPaymentInput` for Iranian payment fields that collect bank card numbers or SHABA numbers. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput--card-number)
 
 Use `JBNumberInput` for general numeric amounts and `JBInput` when the value is not a card or SHABA value.
 
@@ -38,10 +36,12 @@ Use `JBNumberInput` for general numeric amounts and `JBInput` when the value is 
 
 | prop | type | description |
 | --- | --- | --- |
-| `inputType` | `'CARD' \| 'SHABA' \| null` | Payment value mode. Defaults to `CARD`. |
-| `separator` | `string \| null` | Display separator. Defaults to a space; `""` removes grouping separators. |
+| `inputType` | `'CARD' \| 'SHABA' \| null` | Payment value mode. Defaults to `CARD`. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput--shaba-number) |
+| `separator` | `string \| null` | Display separator. Defaults to a space; `""` removes grouping separators. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput--dash-separator-cn) |
 
 ## Controlled value
+
+The [card interaction demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput--card-number) shows controlled canonical values and validation.
 
 ```jsx
 const [value, setValue] = useState('');
@@ -57,11 +57,11 @@ const [value, setValue] = useState('');
 
 ## Value and display value
 
-The visible value may include grouping separators and Persian/Arabic input may be normalized. Always read `event.target.value` for the canonical English-digit card or SHABA value.
+The visible value may include grouping separators and Persian/Arabic input may be normalized. Always read `event.target.value` for the canonical English-digit card or SHABA value. Compare the [card formatting demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput--card-number) with the [SHABA demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput--shaba-number).
 
 ## Input type
 
-Set `inputType="CARD"` for card numbers and `inputType="SHABA"` for SHABA numbers. The selected type controls formatting and validation behavior.
+Set `inputType="CARD"` for card numbers and `inputType="SHABA"` for SHABA numbers. The selected type controls formatting and validation behavior. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput--changing-payment-type-keeps-initial-baseline)
 
 ## Separator
 
@@ -70,7 +70,11 @@ Set `inputType="CARD"` for card numbers and `inputType="SHABA"` for SHABA number
 <JBPaymentInput inputType="CARD" separator="" />;
 ```
 
+See the [dash separator demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput--dash-separator-cn).
+
 ## Bank indicator
+
+The [bank-logo demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput--card-number-with-bank-logo) shows the React slot integration.
 
 ```jsx
 import { JBPaymentInput } from 'jb-payment-input/react';
@@ -83,7 +87,7 @@ import { BankIndicator } from 'jb-payment-input/bank-indicator/react';
 
 ## Validation
 
-Use `validationList` for custom payment rules.
+Use `validationList` for custom payment rules. The [card validation demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput--card-number) and [required-field demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput--required-card-number) cover built-in validation.
 
 ```jsx
 const validationList = [
@@ -100,7 +104,13 @@ const validationList = [
 <JBPaymentInput validationList={validationList} />;
 ```
 
+## Events
+
+Payment input events are inherited from `JBInput`; `onInput` exposes normalized edits and `onChange` exposes committed canonical values. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput--card-number-paste)
+
 ## Check validation
+
+Use the ref-based API in the [card validation example](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput--card-number).
 
 ```jsx
 const elementRef = useRef();
@@ -111,9 +121,13 @@ const isVisibleValid = elementRef.current.reportValidity();
 <JBPaymentInput ref={elementRef} />;
 ```
 
+## Slots
+
+Use inherited `start-section` and `end-section` slots for payment adornments such as the bank indicator. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput--card-number-with-bank-logo)
+
 ## Styling
 
-The React component uses the same CSS variables as the web component. For custom style options, see [`jb-payment-input`](https://github.com/javadbat/jb-payment-input), [`bank-indicator`](https://github.com/javadbat/jb-payment-input/tree/main/bank-indicator), and inherited [`jb-input`](https://github.com/javadbat/jb-input) styling docs.
+The React component uses the same CSS variables as the web component. See the shared [web-component CSS guidance](../README.md#css-variables), the [style gallery](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput-style--gallery), and the [bank-indicator documentation](https://javadbat.github.io/design-system/?path=/docs/components-form-elements-inputs-jbpaymentinput-bank-indicator-readme--docs).
 
 ## CSS variables
 
@@ -121,11 +135,11 @@ Use the same CSS variables as the web component, plus inherited `jb-input` varia
 
 ## Accessibility notes
 
-Set a clear `label` that identifies whether the field expects a card number or SHABA number. Treat bank indicators as supplemental visual information and keep the text label explicit.
+Set a clear `label` that identifies whether the field expects a card number or SHABA number. Treat bank indicators as supplemental visual information and keep the text label explicit. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput--card-number-with-bank-logo)
 
 ## Shared Documentation
 
-For web-component behavior, events, validation, slots, and CSS variables, see [`jb-payment-input`](https://github.com/javadbat/jb-payment-input).
+For web-component behavior, events, validation, slots, and CSS variables, see the shared [`jb-payment-input` documentation](../README.md).
 
 ## Related Docs
 
