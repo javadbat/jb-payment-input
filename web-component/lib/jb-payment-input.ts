@@ -1,3 +1,4 @@
+import { defineWebComponent, faToEnDigits } from "jb-core";
 import CSS from "./jb-payment-input.css";
 import VariablesCSS from "./variables.css";
 import "jb-input";
@@ -5,7 +6,6 @@ import { type PaymentInputType } from './types';
 // eslint-disable-next-line no-duplicate-imports
 import { JBInputWebComponent, type JBInputValue } from "jb-input";
 import { type ValidationItem } from "jb-validation";
-import { faToEnDigits } from "jb-core";
 import { cardNumberLength, shabaFormat, shabaLength } from "./validation.js";
 import { PaymentInputTypeList } from "./constants.js";
 export * from './types.js';
@@ -182,7 +182,4 @@ export class JBPaymentInputWebComponent extends JBInputWebComponent {
   }
 }
 
-const myElementNotExists = !customElements.get("jb-payment-input");
-if (myElementNotExists) {
-  window.customElements.define("jb-payment-input", JBPaymentInputWebComponent);
-}
+defineWebComponent("jb-payment-input", JBPaymentInputWebComponent);

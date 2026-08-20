@@ -64,7 +64,7 @@
   },
   "dependencies": {
     "jb-input": "^3.17.0",
-    "jb-core":"^0.30.0",
+    "jb-core":"^0.35.0",
     "jb-validation":"^1.0.0"
   },
   "devDependencies": {

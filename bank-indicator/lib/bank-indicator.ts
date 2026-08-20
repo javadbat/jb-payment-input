@@ -1,3 +1,4 @@
+import { defineWebComponent, JBBaseComponent } from "jb-core";
 import CSS from './bank-indicator.css';
 import { BankIndicatorElements, BankItem } from './types';
 import {allBankInfo} from './BankInfo';
@@ -6,7 +7,7 @@ import { renderHTML } from './render';
 import { i18n } from 'jb-core/i18n';
 import { dictionary } from './i18n';
 export * from './types.js';
-export class BankIndicatorWebComponent extends HTMLElement {
+export class BankIndicatorWebComponent extends JBBaseComponent {
     #internals?: ElementInternals;
     elements!:BankIndicatorElements;
     bankInfo = allBankInfo;
@@ -112,7 +113,4 @@ export class BankIndicatorWebComponent extends HTMLElement {
         
     }
 }
-const myElementNotExists = !customElements.get('bank-indicator');
-if (myElementNotExists) {
-  window.customElements.define('bank-indicator', BankIndicatorWebComponent);
-}
+defineWebComponent('bank-indicator', BankIndicatorWebComponent);
