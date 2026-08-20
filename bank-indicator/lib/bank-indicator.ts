@@ -114,3 +114,9 @@ export class BankIndicatorWebComponent extends JBBaseComponent {
     }
 }
 defineWebComponent('bank-indicator', BankIndicatorWebComponent);
+
+declare global {
+  interface HTMLElementTagNameMap {
+    "bank-indicator": BankIndicatorWebComponent;
+  }
+}

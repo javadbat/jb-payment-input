@@ -183,3 +183,9 @@ export class JBPaymentInputWebComponent extends JBInputWebComponent {
 }
 
 defineWebComponent("jb-payment-input", JBPaymentInputWebComponent);
+
+declare global {
+  interface HTMLElementTagNameMap {
+    "jb-payment-input": JBPaymentInputWebComponent;
+  }
+}
