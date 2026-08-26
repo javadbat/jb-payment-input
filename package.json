@@ -60,7 +60,7 @@
   "customElements": "web-component/custom-elements.json",
   "repository": {
 		"type": "git",
-		"url": "git@github.com:javadbat/jb-payment-input.git"
+		"url": "https://github.com/javadbat/jb-payment-input.git"
   },
   "dependencies": {
     "jb-input": "^3.17.0",

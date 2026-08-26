@@ -31,7 +31,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com:javadbat/jb-payment-input-react.git"
+    "url": "https://github.com/javadbat/jb-payment-input-react.git"
   },
   "types": "./dist/JBPaymentInput.d.ts",
   "dependencies": {

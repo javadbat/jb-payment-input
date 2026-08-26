@@ -30,7 +30,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com:javadbat/jb-payment-input.git"
+    "url": "https://github.com/javadbat/jb-payment-input.git"
   },
   "types": "./dist/BankIndicator.d.ts"
 }
