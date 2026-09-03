@@ -16,9 +16,9 @@ const JBPaymentInput = React.forwardRef((props:Props, ref) => {
     [element],
   );
 
-  const {disabled,initialValue,required,validationList,value,separator,inputType, children,onBeforeinput,onBlur,onChange,onEnter,onFocus,onInput,onKeydown,onKeyup, ...otherProps} = props;
+  const {disabled,initialValue,required,validationList,value,separator,inputType, children,onBeforeInput,onBlur,onChange,onEnter,onFocus,onInput,onKeyDown,onKeyUp, ...otherProps} = props;
   useJBInputAttribute(element,{disabled,required,validationList,...otherProps});
-  useJBInputEvents<JBPaymentInputWebComponent>(element,{onBeforeinput,onBlur,onChange,onEnter,onFocus,onInput,onKeydown,onKeyup,...otherProps});
+  useJBInputEvents<JBPaymentInputWebComponent>(element,{onBeforeInput,onBlur,onChange,onEnter,onFocus,onInput,onKeyDown,onKeyUp,...otherProps});
 
   useEffect(() => {
     if (element.current) {

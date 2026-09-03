@@ -148,7 +148,7 @@ import 'jb-payment-input/bank-indicator';
 
 ```html
 <jb-payment-input input-type="CARD" label="Card number" message="With bank indicator">
-  <bank-indicator slot="end-section"></bank-indicator>
+  <bank-indicator slot="inline-end"></bank-indicator>
 </jb-payment-input>
 ```
 

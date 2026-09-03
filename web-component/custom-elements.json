@@ -267,11 +267,11 @@
           ],
           "slots": [
             {
-              "name": "start-section",
+              "name": "inline-start",
               "description": "Inherited from jb-input. Content rendered before the native input. Commonly used for bank-indicator."
             },
             {
-              "name": "end-section",
+              "name": "inline-end",
               "description": "Inherited from jb-input. Content rendered after the native input. Commonly used for bank-indicator."
             }
           ],
@@ -281,7 +281,7 @@
               "description": "Inherited from jb-input. The label element."
             },
             {
-              "name": "input-box",
+              "name": "control",
               "description": "Inherited from jb-input. The wrapper around slots and inner input."
             },
             {

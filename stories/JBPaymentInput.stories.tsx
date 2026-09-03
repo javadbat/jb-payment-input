@@ -267,7 +267,7 @@ export const CardNumberWithBankLogo: Story = {
     message: "card number with bank logo (ex: start card with 603799 number to see melli bank logo)",
     value: "",
     inputType: "CARD",
-    children: <BankIndicator slot="end-section" />
+    children: <BankIndicator slot="inline-end" />
   },
   play: async ({ canvasElement }) => {
     const paymentInput = getPaymentInput(canvasElement);

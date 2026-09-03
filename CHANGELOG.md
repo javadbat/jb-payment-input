@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.0.0] - 2026-09-03
+
+### Changed
+
+- Breaking: updated inherited input styling parts to use `control` and logical directional slots.
+- Breaking: renamed React keyboard event props to the React convention: `onBeforeInput`, `onKeyDown`, and `onKeyUp`; old prop names are removed.
+
 ## [3.6.0] - 2026-09-01
 
 ### Changed

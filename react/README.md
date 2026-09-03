@@ -81,7 +81,7 @@ import { JBPaymentInput } from 'jb-payment-input/react';
 import { BankIndicator } from 'jb-payment-input/bank-indicator/react';
 
 <JBPaymentInput inputType="CARD" label="Card number">
-  <BankIndicator slot="end-section" />
+  <BankIndicator slot="inline-end" />
 </JBPaymentInput>;
 ```
 
@@ -123,7 +123,7 @@ const isVisibleValid = elementRef.current.reportValidity();
 
 ## Slots
 
-Use inherited `start-section` and `end-section` slots for payment adornments such as the bank indicator. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput--card-number-with-bank-logo)
+Use inherited `inline-start` and `inline-end` slots for payment adornments such as the bank indicator. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-inputs-jbpaymentinput--card-number-with-bank-logo)
 
 ## Styling
 

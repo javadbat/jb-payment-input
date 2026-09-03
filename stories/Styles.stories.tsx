@@ -61,7 +61,7 @@ function PaymentInputStyleSample({ className }: { className: string }) {
       }}
     >
       <JBPaymentInput className={className} label="Card number" value="6037991234567890" message="Detected bank card" inputType="CARD">
-        <BankIndicator slot="end-section" prefix="603799" />
+        <BankIndicator slot="inline-end" prefix="603799" />
       </JBPaymentInput>
       <JBPaymentInput className={className} label="IBAN / Shaba" value="IR120000000000000000000000" inputType="SHABA" />
       <JBPaymentInput className={className} label="Validation error" value="603799123456789" error="Enter all 16 digits of the card number" inputType="CARD" />

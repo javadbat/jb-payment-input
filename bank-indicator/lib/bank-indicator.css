@@ -8,7 +8,7 @@
 .bank-indicator-web-component{
     height: 100%;
     aspect-ratio: 1 / 1;
-    --jb-input-box-indicator-padding: var(--bank-indicator-padding,0.5rem 1rem);
+    --jb-control-indicator-padding: var(--bank-indicator-padding,0.5rem 1rem);
     .bank-image-wrapper{
         height: 100%;
         width: 100%;

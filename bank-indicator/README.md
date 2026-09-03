@@ -13,7 +13,7 @@ import 'jb-payment-input/bank-indicator';
 
 ```html
 <jb-payment-input input-type="CARD" label="Card number">
-  <bank-indicator slot="end-section"></bank-indicator>
+  <bank-indicator slot="inline-end"></bank-indicator>
 </jb-payment-input>
 ```
 
@@ -59,5 +59,5 @@ Use it standalone by setting `prefix`. [Documentation demo](https://javadbat.git
 ## AI agent notes
 
 - Import `jb-payment-input/bank-indicator` before using `<bank-indicator>`.
-- Put `<bank-indicator slot="end-section">` or `<bank-indicator slot="start-section">` inside `<jb-payment-input input-type="CARD">` for automatic detection.
+- Put `<bank-indicator slot="inline-end">` or `<bank-indicator slot="inline-start">` inside `<jb-payment-input input-type="CARD">` for automatic detection.
 - Use the `prefix` attribute for standalone detection.
