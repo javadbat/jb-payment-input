@@ -12,7 +12,7 @@ export const webComponentList: WebComponentBuildConfig[] = [
       "jb-input": "JBInput",
       "jb-validation": "JBValidation",
       "jb-core":"JBCore",
-      "jb-core/i18n":"JBCoreI18N",
+      "jb-core/i18n":"JBCoreI18n",
       "jb-core/theme":"JBCoreTheme"
     },
   },
@@ -24,7 +24,7 @@ export const webComponentList: WebComponentBuildConfig[] = [
     external: ["jb-payment-input", "jb-core/i18n"],
     globals: {
       "jb-payment-input":"JBPaymentInput",
-      "jb-core/i18n":"JBCoreI18N"
+      "jb-core/i18n":"JBCoreI18n"
     },
     dir: "./bank-indicator",
   },
