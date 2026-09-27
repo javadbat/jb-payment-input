@@ -13,12 +13,12 @@ const JBPaymentInput = React.forwardRef((props:Props, ref) => {
   useImperativeHandle(
     ref,
     () => (element ? element.current : {}),
-    [element],
+    [],
   );
 
-  const {disabled,initialValue,required,validationList,value,separator,inputType, children,onBeforeInput,onBlur,onChange,onEnter,onFocus,onInput,onKeyDown,onKeyUp, ...otherProps} = props;
+  const {disabled,initialValue,required,validationList,value,separator,inputType, children,onBeforeInput,onBlur,onChange, onChangeNative,onEnter,onFocus,onInput,onKeyDown,onKeyUp, ...otherProps} = props;
   useJBInputAttribute(element,{disabled,required,validationList,...otherProps});
-  useJBInputEvents<JBPaymentInputWebComponent>(element,{onBeforeInput,onBlur,onChange,onEnter,onFocus,onInput,onKeyDown,onKeyUp,...otherProps});
+   const {onChange:internalOnchange} = useJBInputEvents<JBPaymentInputWebComponent>(element,{onBeforeInput,onBlur,onChange,onChangeNative,onEnter,onFocus,onInput,onKeyDown,onKeyUp,...otherProps});
 
   useEffect(() => {
     if (element.current) {
@@ -48,7 +48,7 @@ const JBPaymentInput = React.forwardRef((props:Props, ref) => {
   }, [value]);
 
   return (
-    <jb-payment-input ref={element} {...otherProps}>
+    <jb-payment-input ref={element} {...otherProps} onChange={internalOnchange} onInput={internalOnchange}>
       {children}
     </jb-payment-input>
   );
